@@ -36,7 +36,6 @@
 
     
     <main class="main_wrapper overflow-hidden">
-        @include('web.partials.navbar')
         @yield('content')
     </main>
 
