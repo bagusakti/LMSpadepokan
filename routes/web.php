@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SiswaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,3 +20,4 @@ Route::get('/', function () {
 });
 
 Route::get('/home',[HomeController::class, 'index'])->name('home');
+Route::get('/siswa',[SiswaController::class, 'index'])->name('dashboard_siswa');
