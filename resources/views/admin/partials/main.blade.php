@@ -34,10 +34,20 @@
 
 <body class="body__wrapper">
 
-    
-    <main class="main_wrapper overflow-hidden">
-        @yield('content')
-    </main>
+    <div class="dashboard">
+        <div class="container-fluid full__width__padding">
+            <div class="row">
+                <div class="col-xl-3 col-lg-3 col-md-12">
+                    @include('admin.partials.sidebar')
+                </div>
+                <div class="col-xl-9 col-lg-9 col-md-12">
+                    @yield('content')
+                </div>
+
+              
+            </div>
+        </div>
+    </div>
 
 
     <!-- JS here -->
