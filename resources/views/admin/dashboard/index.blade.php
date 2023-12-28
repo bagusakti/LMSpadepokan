@@ -117,11 +117,11 @@
             <div class="dashboard__section__title">
                 <h4>Dashboard</h4>
                 <select class="form-select" aria-label="Default select example">
-                    <option selected>HTML</option>
-                    <option value="1">CSS</option>
-                    <option value="2">Javascript</option>
-                    <option value="3">PHP</option>
-                    <option value="4">WordPress</option>
+                    <option selected>Metaverse</option>
+                    <option value="1">Data Science</option>
+                    <option value="2">Web Programming</option>
+                    <option value="3">Story Telling</option>
+                    <option value="4">Techno Preneur</option>
                 </select>
             </div>
         </div>
