@@ -16,20 +16,20 @@
 
                                     <div class="herobannerarea__title">
                                         <div class="herobannerarea__small__title">
-                                            <span>Artificial Intelligence</span>
+                                            <span>Selamat Datang Di</span>
                                         </div>
                                         <div class="herobannerarea__title__heading__2 herobannerarea__title__heading__3">
-                                            <h2>The Best Machine Learning for Smart <span>AI</span> Systems.</h2>
+                                            <h2>Platform Pembelajaran Online Kami! <span>Gema</span> E-learning.</h2>
                                         </div>
                                     </div>
 
 
                                     <div class="herobannerarea__text herobannerarea__text__2">
-                                        <p>Lorem Ipsum is simply dummy text of the printing typesetting <br>industry. Lorem Ipsum has been </p>
+                                        <p>Peluang Baru, Wawasan Baru, Prestasi Baru <br>Temukan Potensi Anda Melalui Pembelajaran Interaktif </p>
                                     </div>
                                     <div class="hreobannerarea__button__2">
-                                        <a class="default__button" href="#">Buy Now</a>
-                                        <a class="default__button hreobannerarea__button__3" href="#">Explore More</a>
+                                        <a class="default__button" href="#">Masuk</a>
+                                        <a class="default__button hreobannerarea__button__3" href="#">Daftar</a>
                                     </div>
                                 </div>
                             </div>
@@ -49,7 +49,7 @@
             </div>
 
             <div class="herobannerarea__icon__2">
-                <img class="herobanner__common__img herobanner__img__1" src="img/herobanner/herobanner__ai.png" alt="photo">
+                <img class="herobanner__common__img herobanner__img__1" src="{{asset('assets/img/herobanner/herobanner__4.png')}}" alt="photo">
                 <!-- <img class="herobanner__common__img herobanner__img__2" src="img/herobanner/herobanner__2.png" alt="photo">
                 <img class="herobanner__common__img herobanner__img__3" src="img/herobanner/herobanner__3.png" alt="photo">
                 <img class="herobanner__common__img herobanner__img__4" src="img/herobanner/herobanner__4.png" alt="photo">
@@ -67,20 +67,20 @@
 							<div class="default__small__button">#Research</div>
 						</div>
 						<div class="section__title__heading heading__underline">
-							<h2>Differentiating through case <span>studies</span> <br>Machine learning.</h2>
+							<h2>Komunitas Belajar Online <span>Berbagi Pengetahuan</span> <br>Membangun Inspirasi.</h2>
 						</div>
 					</div>
 				</div>
 
 				<div class="row">
-					<div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12" data-aos="fade-up">
+					<div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12 mb-4" data-aos="fade-up">
 						<div class="single__blog__wraper">
 							<div class="single__blog__img">
-								<img src="img/program/ai_1.jpg" alt="blog">
+								<img src="{{asset('assets/img/program/ai_1.jpg')}}" alt="blog">
 							</div>
 							<div class="single__blog__content">
-								<p>Technology</p>
-								<h4> <a href="#">Army Defence Intelligence & Ml</a></h4>
+								<p>Literasi</p>
+								<h4> <a href="#">PELATIHAN LITERASI</a></h4>
 								<div class="single__blog__bottom__button">
 									<a href="#">Read More </a>
 								</div>
@@ -88,14 +88,14 @@
 						</div>
 					</div>
 
-					<div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12" data-aos="fade-up">
+					<div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12 mb-4" data-aos="fade-up">
 						<div class="single__blog__wraper">
 							<div class="single__blog__img">
-								<img src="img/program/ai_2.jpg" alt="blog">
+								<img src="{{asset('assets/img/program/ai_2.jpg')}}" alt="blog">
 							</div>
 							<div class="single__blog__content">
-								<p>Machine</p>
-								<h4> <a href="#">Classifying Best Intelligence Photos</a></h4>
+								<p>Technopreneur</p>
+								<h4> <a href="#">LOMBA TECHNOPRENEUR</a></h4>
 								<div class="single__blog__bottom__button">
 									<a href="#">Read More </a>
 								</div>
@@ -103,14 +103,14 @@
 						</div>
 					</div>
 
-					<div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12" data-aos="fade-up">
+					<div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12 mb-4" data-aos="fade-up">
 						<div class="single__blog__wraper">
 							<div class="single__blog__img">
-								<img src="img/program/ai_3.jpg" alt="blog">
+								<img src="{{asset('assets/img/program/ai_3.jpg')}}" alt="blog">
 							</div>
 							<div class="single__blog__content">
-								<p>Robot</p>
-								<h4> <a href="#">Industry Labor Machine</a></h4>
+								<p>Game</p>
+								<h4> <a href="#">LOMBA PEMBUATAN GAME</a></h4>
 								<div class="single__blog__bottom__button">
 									<a href="#">Read More </a>
 								</div>
@@ -118,14 +118,107 @@
 						</div>
 					</div>
 					
-					<div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12" data-aos="fade-up">
+					<div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12 mb-4" data-aos="fade-up">
 						<div class="single__blog__wraper">
 							<div class="single__blog__img">
-								<img src="img/program/ai_4.jpg" alt="blog">
+								<img src="{{asset('assets/img/program/ai_4.jpg')}}" alt="blog">
 							</div>
 							<div class="single__blog__content">
-								<p>Automation</p>
-								<h4> <a href="#">Education Super Al Studies</a></h4>
+								<p>Golden Ticket</p>
+								<h4> <a href="#">PERSIAPAN PROGRAM GOLDEN TICKET</a></h4>
+								<div class="single__blog__bottom__button">
+									<a href="#">Read More </a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12 mb-4" data-aos="fade-up">
+						<div class="single__blog__wraper">
+							<div class="single__blog__img">
+								<img src="{{asset('assets/img/program/ai_1.jpg')}}" alt="blog">
+							</div>
+							<div class="single__blog__content">
+								<p>game</p>
+								<h4> <a href="#">SIMULASI GAME NIB</a></h4>
+								<div class="single__blog__bottom__button">
+									<a href="#">Read More </a>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12 mb-4" data-aos="fade-up">
+						<div class="single__blog__wraper">
+							<div class="single__blog__img">
+								<img src="{{asset('assets/img/program/ai_2.jpg')}}" alt="blog">
+							</div>
+							<div class="single__blog__content">
+								<p>Metaverse</p>
+								<h4> <a href="#">PELATIHAN METAVERSE DASAR</a></h4>
+								<div class="single__blog__bottom__button">
+									<a href="#">Read More </a>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12 mb-4" data-aos="fade-up">
+						<div class="single__blog__wraper">
+							<div class="single__blog__img">
+								<img src="{{asset('assets/img/program/ai_3.jpg')}}" alt="blog">
+							</div>
+							<div class="single__blog__content">
+								<p>Metaverse</p>
+								<h4> <a href="#">PELATIHAN METAVERSE INTERMEDIETE</a></h4>
+								<div class="single__blog__bottom__button">
+									<a href="#">Read More </a>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12 mb-4" data-aos="fade-up">
+						<div class="single__blog__wraper">
+							<div class="single__blog__img">
+								<img src="{{asset('assets/img/program/ai_4.jpg')}}" alt="blog">
+							</div>
+							<div class="single__blog__content">
+								<p>Metaverse</p>
+								<h4> <a href="#">PELATIHAN METAVERSE LANJUT</a></h4>
+								<div class="single__blog__bottom__button">
+									<a href="#">Read More </a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12 mb-4" data-aos="fade-up">
+						<div class="single__blog__wraper">
+							<div class="single__blog__img">
+								<img src="{{asset('assets/img/program/ai_1.jpg')}}" alt="blog">
+							</div>
+							<div class="single__blog__content">
+								<p>Story Telling</p>
+								<h4> <a href="#">PELATIHAN STORY TELLING</a></h4>
+								<div class="single__blog__bottom__button">
+									<a href="#">Read More </a>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12 mb-4" data-aos="fade-up">
+						<div class="single__blog__wraper">
+							<div class="single__blog__img">
+								<img src="{{asset('assets/img/program/ai_2.jpg')}}" alt="blog">
+							</div>
+							<div class="single__blog__content">
+								<p>Web Development</p>
+								<h4> <a href="#">PELATIHAN FRONTEND & BACKEND</a></h4>
 								<div class="single__blog__bottom__button">
 									<a href="#">Read More </a>
 								</div>
