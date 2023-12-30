@@ -4,6 +4,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\TrainerController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,12 +18,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-Route::get('/home',[HomeController::class, 'index'])->name('home');
+Route::get('/',[HomeController::class, 'index'])->name('home');
 Route::get('/siswa',[SiswaController::class, 'index'])->name('dashboard_siswa');
 Route::get('/trainer',[TrainerController::class, 'index'])->name('dashboard_trainer');
 Route::get('/admin',[AdminController::class, 'index'])->name('dashboard_admin');
+Route::get('/login',[AuthController::class, 'login'])->name('login_page');
+Route::get('/register',[AuthController::class, 'register'])->name('register_page');
+Route::post('login',[AuthController::class, 'dologin'])->name('login');
+Route::post('register',[AuthController::class, 'doregister'])->name('register');
+Route::get('logout',[AuthController::class, 'logout'])->name('logout');
+
+
 
