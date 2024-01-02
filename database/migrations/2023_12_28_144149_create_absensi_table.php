@@ -13,7 +13,11 @@ return new class extends Migration
     {
         Schema::create('absensi', function (Blueprint $table) {
             $table->id();
+            $table->integer('user_id')->unsigned;
+            $table->time('attendance_time');
+            $table->date('attendance_date');
             $table->boolean('status')->default(0);
+            // $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

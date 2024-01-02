@@ -1,6 +1,6 @@
                <div class="dashboard__inner sticky-top">
                     <div class="dashboard__nav__title">
-                        <h6>Welcome, Micle Obema</h6>
+                        <h6>Welcome, Admin</h6>
                     </div>
                     <div class="dashboard__nav">
                         <ul>
@@ -15,7 +15,7 @@
                                     </svg>
                                     Dashboard</a>
                             </li>
-                            <li>
+                            {{-- <li>
                                 <a href="admin-profile.html">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                         viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -25,7 +25,7 @@
                                         <circle cx="12" cy="7" r="4"></circle>
                                     </svg>
                                     My Profile</a>
-                            </li>
+                            </li> --}}
                             <li>
                                 <a  href="admin-message.html">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -35,7 +35,7 @@
                                         <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
                                         <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
                                     </svg>
-                                    Message</a><span class="dashboard__label">12</span>
+                                    Data User</a><span class="dashboard__label">12</span>
                                     <span class="dashboard__label">12</span>
                             </li>
                             <li>
@@ -46,9 +46,9 @@
                                         class="feather feather-bookmark">
                                         <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
                                     </svg>
-                                    Courses</a>
+                                    Data Course</a>
                             </li>
-                            <li>
+                            {{-- <li>
                                 <a href="admin-reviews.html">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                         viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -59,8 +59,8 @@
                                         </polygon>
                                     </svg>
                                     Reviews</a>
-                            </li>
-                            <li>
+                            </li> --}}
+                            {{-- <li>
                                 <a href="admin-quiz-attempts.html">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                         viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -71,17 +71,17 @@
                                         <line x1="12" y1="17" x2="12.01" y2="17"></line>
                                     </svg>
                                     Quiz Attempts</a>
-                            </li>
+                            </li> --}}
                         </ul>
                     </div>
 
                     <div class="dashboard__nav__title mt-40">
-                        <h6>user</h6>
+                        <h6>Autentikasi</h6>
                     </div>
 
                     <div class="dashboard__nav">
                         <ul>
-                            <li>
+                            {{-- <li>
                                 <a href="admin-settings.html">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                         viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -93,7 +93,7 @@
                                         </path>
                                     </svg>
                                     Settings</a>
-                            </li>
+                            </li> --}}
                             <li>
                                 <a href="{{ route('logout') }}">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"

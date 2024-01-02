@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Siswa;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -76,6 +77,13 @@ class AuthController extends Controller
             'institusi' => $request->institusi,
             'whatsapp' => $request->whatsapp,
             'password' => Hash::make($request->password)
+        ]);
+
+        Siswa::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'institusi' => $request->institusi,
+            'whatsapp' => $request->whatsapp,
         ]);
         // dd($user->all());
 

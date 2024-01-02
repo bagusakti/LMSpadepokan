@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('siswa', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
+            $table->string('name');
+            $table->string('email')->unique();
             $table->string('institusi');
-            $table->integer('whatsapp');
+            $table->bigInteger('whatsapp');
             $table->boolean('status')->default(0);
             $table->timestamps();
         });
