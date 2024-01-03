@@ -6,7 +6,7 @@ use App\Http\Controllers\TrainerController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\FillPDFController2;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,6 +17,11 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+// Route::get('/siswa/pelatihanliterasi/buat/sertifikat2', [Hal2Controller::class, 'process']);
+Route::get('/siswa/pelatihanliterasi/buat/sertifikat', [FillPDFController2::class, 'process']);
+// Route::get('/siswa/pelatihanliterasi/buat/combined-sertifikat', [CombinePDFWithQRController::class, 'combineAndOutput']);
+
 Route::get('/buat', [\App\Http\Controllers\FillPDFController::class, 'process']);
 
 // Route::get('/', function () {
