@@ -11,9 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('linkgbook', function (Blueprint $table) {
+        Schema::create('tugas', function (Blueprint $table) {
             $table->id();
-            $table->string('link');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->string('link_gbook')->nullable();
+            $table->string('link_blog')->nullable();
             $table->timestamps();
         });
     }
@@ -23,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('linkgbook');
+        Schema::dropIfExists('tugas');
     }
 };

@@ -10,7 +10,7 @@
                     <div class="col-xl-8 col-md-8 offset-md-2">
                         <div class="loginarea__wraper">
                             <div class="login__heading">
-                                <h5 class="login__title">Login</h5>
+                                <h5 class="login__title">MASUK</h5>
                                 <p class="login__description">Belum memiliki akun? <a href="{{ route('register_page') }}" >Silahkan Daftar</a></p>
                             </div>
 
@@ -19,9 +19,9 @@
                             <form id="login-form" action="{{ route('login') }}" method="POST">
                                 @csrf
                                 <div class="login__form">
-                                    <label class="form__label">Email :</label>
+                                    <label for="email" class="form__label">Email :</label>
                                     <input class="common__login__input  @error('error') is-invalid @enderror" type="text" placeholder="Email Anda"
-                                        name="email" value="{{ old('email') }}" id="email" type="email" required>
+                                        name="email" value="{{ session('email') }}" id="email" type="email" required>
                                         @error('error')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -29,7 +29,7 @@
                                         @enderror
                                 </div>
                                 <div class="login__form">
-                                    <label class="form__label">Password :</label>
+                                    <label for="password" class="form__label">Password :</label>
                                     <input class="common__login__input" type="password" placeholder="Password"
                                         name="password" type="password" id="password" required>
                                         @error('error')

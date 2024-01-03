@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('institusi');
-            $table->integer('whatsapp');
+            $table->string('whatsapp');
             $table->timestamps();
         });
     }

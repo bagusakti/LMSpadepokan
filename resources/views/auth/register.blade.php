@@ -5,12 +5,11 @@
     <div class="container">
         <div class="row">
             <div class="tab-content tab__content__wrapper" id="myTabContent" data-aos="fade-up">
-
                 <div class="tab-pane fade active show" id="projects__one" role="tabpanel" aria-labelledby="projects__one">
                     <div class="col-xl-8 col-md-8 offset-md-2">
                         <div class="loginarea__wraper">
                             <div class="login__heading">
-                                <h5 class="login__title">Daftar</h5>
+                                <h5 class="login__title">DAFTAR</h5>
                                 <p class="login__description">Sudah Memiliki Akun? <a href="{{ route('login_page') }}">Silahkan Masuk</a></p>
                             </div>
 
@@ -28,12 +27,12 @@
                                         @enderror
                                 </div>
                                 <div class="login__form">
-                                    <label class="form__label">Masukkan Asal Institusi :</label>
+                                    <label for="institusi" class="form__label">Masukkan Asal Institusi :</label>
                                     <input class="common__login__input" type="text" placeholder="Asal Institusi Anda" name="institusi" value="{{ old('institusi') }}" id="institusi" required>
 
                                 </div>
                                 <div class="login__form">
-                                    <label class="form__label">Masukkan Nomor Whatsapp :</label>
+                                    <label for="whatsapp" class="form__label">Masukkan Nomor Whatsapp :</label>
                                     <input class="common__login__input @error('whatsapp') is-invalid @enderror" name="whatsapp" value="{{ old('whatsapp') }}" id="whatsapp" type="number" placeholder="Nomor Whatsapp anda *contoh 08546...(sesuaikan dengan nomor anda)" required>
                                     @error('whatsapp')
                                         <span class="invalid-feedback" role="alert">
@@ -42,7 +41,7 @@
                                     @enderror
                                 </div>
                                 <div class="login__form">
-                                    <label class="form__label">Masukkan Email Anda :</label>
+                                    <label for="email" class="form__label">Masukkan Email Anda :</label>
                                         <input class="common__login__input @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" id="email" type="email" placeholder="Email anda *contoh example@gmail.com" required autocomplete="email">
                                         @if($errors->has('email'))
                                         <span class="invalid-feedback" role="alert">
@@ -51,16 +50,16 @@
                                         @endif
                                 </div>
                                 <div class="login__form">
-                                    <label class="form__label">Masukkan Password Anda :</label>
-                                                <input class="common__login__input @error('password') is-invalid @enderror" id="password" type="password" placeholder="Buat Password" name="password" required autocomplete="new-password">
-                                                @error('password')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
+                                    <label for="password" class="form__label">Masukkan Password Anda : (Minimal 8 Karakter)</label>
+                                        <input class="common__login__input @error('password') is-invalid @enderror" id="password" type="password" placeholder="Buat Password" name="password" required autocomplete="new-password">
+                                        @error('password')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                 </div>
                                 <div class="login__form">
-                                    <label class="form__label">Masukkan Kembali Password :</label>
+                                    <label for="password-confirmation" class="form__label">Masukkan Kembali Password :</label>
                                                 <input id="password-confirm" type="password" placeholder="Konfirmasi Password" class="common__login__input  @error('password') is-invalid @enderror" name="password_confirmation" required autocomplete="new-password">
                                                 @error('password_confirmation')
                                                 <span class="invalid-feedback" role="alert">
