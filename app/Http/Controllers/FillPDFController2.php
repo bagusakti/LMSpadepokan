@@ -64,7 +64,7 @@ class FillPDFController2 extends Controller
         $fpdi->useTemplate($template);
 
         // Calculate text width for penerimaNama
-        $fpdi->SetFont("helvetica", "B", 25);
+        $fpdi->SetFont("helvetica", "B", 40);
         $textWidthPenerima = $fpdi->GetStringWidth($penerimaNama);
 
         // Determine middle position for penerimaNama
@@ -82,7 +82,7 @@ class FillPDFController2 extends Controller
         $textWidthAdditional = $fpdi->GetStringWidth($additionalText);
 
         // Determine position for additional text (centered beneath penerimaNama)
-        $middleXAdditionalText = $middleXPenerima + 40; // Menggunakan middleXPenerima sebagai referensi
+        $middleXAdditionalText = $middleXPenerima + 66; // Menggunakan middleXPenerima sebagai referensi
         $middleYAdditionalText = $topPenerima + 10; // Sesuaikan nilai ini sesuai kebutuhan
 
         // Display additional text
