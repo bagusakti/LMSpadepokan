@@ -19,7 +19,8 @@ use App\Http\Controllers\FillPDFController2;
 */
 
 // Route::get('/siswa/pelatihanliterasi/buat/sertifikat2', [Hal2Controller::class, 'process']);
-Route::get('/siswa/pelatihanliterasi/buat/sertifikat', [FillPDFController2::class, 'process']);
+Route::get('/siswa/pelatihanliterasi/unduh', [FillPDFController2::class, 'process'])->name('unduh-sertifikat');
+
 // Route::get('/siswa/pelatihanliterasi/buat/combined-sertifikat', [CombinePDFWithQRController::class, 'combineAndOutput']);
 
 //Route::get('/buat', [\App\Http\Controllers\FillPDFController::class, 'process']);

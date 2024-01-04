@@ -3,7 +3,7 @@
 @section('content')
 <div class="dashboard__content__wraper">
     <div class="dashboard__section__title">
-        <h4>Pengumpulan Link</h4>
+        <h4> Link</h4>
         
     </div>
     <div class="row">
@@ -69,7 +69,8 @@
                                     </div>
                                 </div>
                                 <div class="grid__course__status populerarea__button">                                  
-                                    <a class="default__button" href="#">Unduh Sertifikat</a>
+                                    <a class="default__button" href="{{ route('unduh-sertifikat') }}">Unduh Sertifikat</a>
+
                                 </div>
                             </div>
                         </div>
