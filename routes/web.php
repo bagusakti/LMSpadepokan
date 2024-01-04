@@ -22,7 +22,7 @@ use App\Http\Controllers\FillPDFController2;
 Route::get('/siswa/pelatihanliterasi/buat/sertifikat', [FillPDFController2::class, 'process']);
 // Route::get('/siswa/pelatihanliterasi/buat/combined-sertifikat', [CombinePDFWithQRController::class, 'combineAndOutput']);
 
-Route::get('/buat', [\App\Http\Controllers\FillPDFController::class, 'process']);
+//Route::get('/buat', [\App\Http\Controllers\FillPDFController::class, 'process']);
 
 // Route::get('/', function () {
 //     return view('welcome');
