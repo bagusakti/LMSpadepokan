@@ -7,7 +7,6 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FillPDFController2;
-use App\Http\Controllers\VerificationController;
 
 
 
@@ -16,7 +15,6 @@ use App\Http\Controllers\VerificationController;
 Route::get('/siswa/pelatihanliterasi/unduh', [FillPDFController2::class, 'process']);
 
 
-Route::get('/verification', [VerificationController::class, 'index'])->name('verification.index');
 
 
 

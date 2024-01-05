@@ -33,6 +33,34 @@
         </div>
     </div>
     
+<div class="dashboard__content__wraper">
+    <div class="dashboard__section__title">
+        <h4>Verifikasi Sertifikat</h4>
+    </div>
+    <div class="row">
+        <div class="tab-content tab__content__wrapper aos-init aos-animate" id="myTabContent" data-aos="fade-up">
+            <div class="tab-pane fade active show" id="verifikasi" role="tabpanel" aria-labelledby="verifikasi">
+                <div class="col-xl-8 col-md-8 offset-md-2">
+                    <div class="loginarea__wraper">
+                        <form action="{{ route('verifikasi.proses') }}" method="POST">
+                            @csrf
+                            <div class="login__form">
+                                <label for="nomor_sertifikat" class="form__label">Nomor Sertifikat</label>
+                                <input type="text" class="common__login__input" placeholder="Masukkan Nomor Sertifikat" name="nomor_sertifikat" id="nomor_sertifikat">
+                            </div>
+                            <div class="login__button">
+                                <button type="submit" class="dashboard__small__btn__2 dashboard__small__btn__3">
+                                    <i class="icofont-check"></i> Verifikasi
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 </div>
 <div class="dashboard__content__wraper">
     <div class="dashboard__section__title">
@@ -70,6 +98,7 @@
                                 </div>
                                 <div class="grid__course__status populerarea__button">                                  
                                     <a class="default__button" href="{{ route('unduh-sertifikat') }}">Unduh Sertifikat</a>
+                                    <a class="default__button" href="{{ route('verifikasi.form') }}">Verifikasi Sertifikat</a>
 
                                 </div>
                             </div>

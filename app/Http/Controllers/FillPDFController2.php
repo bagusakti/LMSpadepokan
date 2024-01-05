@@ -5,28 +5,25 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use setasign\Fpdi\Fpdi;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Tugas; 
+use Endroid\QrCode\QrCode;
+use Endroid\QrCode\Writer\PngWriter;
+use Endroid\QrCode\ErrorCorrectionLevel\ErrorCorrectionLevelLow;
 
 class FillPDFController2 extends Controller
 {
+    private static $qrCodePath;
     private $user;
 
     public function process()
     {
         $this->user = Auth::user();
         $tugas = $this->user->tugas->first();
-
-        if (!$tugas) {
-            return response()->json(['error' => 'Tugas not found for the user'], 404);
-        }
-
-        $nomorSertifikat = '12345'; // Gantilah dengan nomor sertifikat yang sesuai
-
         $penerimaNama = $this->user->name;
         $judul = $tugas->judul;
         $linkBlog = $tugas->link_blog;
         $linkGBook = $tugas->link_gbook;
-        $outputfile = public_path() .'/Sertifikat.pdf';
+        self::$qrCodePath = public_path() . "/qrcode_{$this->user->id}.png";
+        $outputfile = public_path() . '/Sertifikat.pdf';
         $pdfFile1 = public_path() . '/master/Halaman1.pdf';
         $pdfFile2 = public_path() . '/master/Halaman2.pdf';
 
@@ -36,20 +33,18 @@ class FillPDFController2 extends Controller
 
         $fpdi = new Fpdi;
 
-        $this->fillPDF($fpdi, $pdfFile1, $penerimaNama, $nomorSertifikat);
+        $this->fillPDF($fpdi, $pdfFile1, $penerimaNama);
 
-        // Cek apakah ada tugas sebelum menambahkan halaman kedua
-        if ($tugas) {
-            $fpdi->AddPage();
-            $this->fillPDFWithLink($fpdi, $pdfFile2, $judul, $linkBlog, $linkGBook, $nomorSertifikat);
-        }
+        $fpdi->AddPage();
+
+        $this->fillPDFWithLink($fpdi, $pdfFile2, $judul, $linkBlog, $linkGBook);
 
         $fpdi->Output($outputfile, 'F');
 
         return response()->file($outputfile);
     }
 
-    public function fillPDF($fpdi, $file, $penerimaNama, $nomorSertifikat)
+    public function fillPDF($fpdi, $file, $penerimaNama)
     {
         if (!$fpdi->setSourceFile($file)) {
             die("Error: Could not open PDF file");
@@ -72,7 +67,7 @@ class FillPDFController2 extends Controller
         $fpdi->SetTextColor(25, 26, 25);
         $fpdi->Text($middleXPenerima, $topPenerima, $penerimaNama);
 
-        $additionalText =  $this->user->institusi;
+        $additionalText = $this->user->institusi;
         $fpdi->SetFont("helvetica", "", 16);
 
         $textWidthAdditional = $fpdi->GetStringWidth($additionalText);
@@ -82,12 +77,14 @@ class FillPDFController2 extends Controller
 
         $fpdi->Text($middleXAdditionalText - ($textWidthAdditional / 2), $middleYAdditionalText, $additionalText);
 
-        $fpdi->SetFont("helvetica", "", 12);
-        $fpdi->SetXY(50, 100);
-        $fpdi->Cell(0, 10, "Nomor Sertifikat: $nomorSertifikat", 0, 1, 'L');
+        $verificationInfo = "Verification Info for Sertifikat: $penerimaNama&user_id={$this->user->id}";
+        $qrCodeSize = 100;
+        $this->generateQrCode($verificationInfo, self::$qrCodePath, $qrCodeSize);
+
+        $this->insertQrCode($fpdi, self::$qrCodePath, $size['height'], $qrCodeSize);
     }
 
-    public function fillPDFWithLink($fpdi, $file, $judul, $linkBlog, $linkGBook, $nomorSertifikat)
+    public function fillPDFWithLink($fpdi, $file, $judul, $linkBlog, $linkGBook)
     {
         if (!$fpdi->setSourceFile($file)) {
             die("Error: Could not open PDF file");
@@ -125,8 +122,32 @@ class FillPDFController2 extends Controller
 
         $fpdi->Text($middleXLinkGBook, $topLinkGBook, $linkGBook);
 
-        $fpdi->SetFont("helvetica", "", 12);
-        $fpdi->SetXY(50, 100);
-        $fpdi->Cell(0, 10, "Nomor Sertifikat: $nomorSertifikat", 0, 1, 'L');
+        $verificationInfo = "Verification Info for Sertifikat: $judul, $linkBlog, $linkGBook&user_id={$this->user->id}";
+        $qrCodeSize = 41;
+        $this->generateQrCode($verificationInfo, self::$qrCodePath, $qrCodeSize);
+
+        $this->insertQrCode($fpdi, self::$qrCodePath, $size['height'], $qrCodeSize);
+    }
+
+    private function generateQrCode(string $data, string $path, int $size)
+    {
+        $qrCode = new QrCode($data);
+        $qrCode->setSize(42);
+        $qrCode->setMargin(0);
+
+        $writer = new PngWriter();
+        $result = $writer->write($qrCode);
+
+        file_put_contents($path, $result->getString());
+    }
+
+    private function insertQrCode($fpdi, $qrCodePath, $pageHeight, $qrCodeSize)
+    {
+        list($qrcodeWidth, $qrcodeHeight) = getimagesize($qrCodePath);
+
+        $qrcodeX = 100;
+        $qrcodeY = -4;
+
+        $fpdi->Image($qrCodePath, $qrcodeX, $qrcodeY, $qrCodeSize, 0, 'PNG');
     }
 }

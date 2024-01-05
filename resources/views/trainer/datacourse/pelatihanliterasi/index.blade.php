@@ -81,7 +81,7 @@
                             <th>{{ $no++ }}</th>
                             <td>{{ $tugas->user->name }}</td>
                             <td>{{ $tugas->judul }}</td>
-                            <td>{{ $tugas->link_blog }}</td>
+                            <td>{{ $tugas->link_blog}}</td>
                             <td>{{ $tugas->link_gbook }}</td>
                             <td>
                                 <span class="{{ $tugas->status_tugas ? 'badge bg-success' : 'badge bg-danger' }}">{{ $siswa->status_tugas ? 'Belum Dikerjakan' : 'Selesai' }}</span>
