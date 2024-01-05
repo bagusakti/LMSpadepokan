@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use App\Models\Siswa;
 use App\Models\Tugas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -28,8 +29,10 @@ class SiswaController extends Controller
     }
 
     public function pelatihanliterasi() {
+        $siswa = Auth::user();
         return view('siswa.course.pelatihanliterasi.index', [
-            'title' => 'Pelatihan Literasi'
+            'siswa' => $siswa,
+            'title' => 'Pelatihan Literasi',
         ]);
     }
 
@@ -43,12 +46,14 @@ class SiswaController extends Controller
         }
 
         $request->validate([
-            'link_gbook' => 'required_without:link_blog|url',
-            'link_blog' => 'required_without:link_gbook|url',
+            'judul' => 'required',
+            'link_gbook' => 'required|url',
+            'link_blog' => 'required|url',
         ]);
 
         Tugas::create([
             'user_id' => auth()->id(),
+            'judul' => $request->judul,
             'link_gbook' => $request->link_gbook,
             'link_blog' => $request->link_blog,
         ]);
@@ -56,4 +61,5 @@ class SiswaController extends Controller
         return back()->with('success', 'Tugas Berhasil Dikumpulkan');
 
     }
+
 }

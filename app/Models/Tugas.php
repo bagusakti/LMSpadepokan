@@ -13,6 +13,7 @@ class Tugas extends Model
 
     protected $fillable = [
         'user_id',
+        'judul',
         'link_gbook',
         'link_blog',
     ];

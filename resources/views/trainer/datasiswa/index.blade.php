@@ -30,12 +30,14 @@
                             <td>{{ $siswa->institusi }}</td>
                             <td>{{ $siswa->whatsapp }}</td>
                             <td>{{ $siswa->email }}</td>
-                            <td><span class="{{ $siswa->status ? 'dashboard__td dashboard__td__2' : 'dashboard__td ' }}">{{ $siswa->status ? 'Belum Lulus' : 'Lulus' }}</span></td>
+                            <td>
+                                <a href="{{ route('change_status_siswa', ['id' => $siswa->id]) }}" class="{{ $siswa->status ? 'btn btn-success' : 'btn btn-danger' }}">{{ $siswa->status ? 'Lulus' : 'Belum Lulus' }}</a>
+                            </td>
 
-                            {{-- <td><span class="dashboard__td dashboard__td__2">Processing</span></td> --}}
-
+                            
                         </tr>
                         @endforeach
+                        {{-- <td><span class="dashboard__td dashboard__td__2">Processing</span></td> --}}
                     </tbody>
                 </table>
             </div>

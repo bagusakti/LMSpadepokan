@@ -1,9 +1,14 @@
 @extends('siswa.partials.main')
 
 @section('content')
+@php
+    $submission = \App\models\Tugas::where('user_id', auth()->id())->first();
+@endphp
+
+@if (!isset($submission->status_tugas) || !$submission->status_tugas)
 <div class="dashboard__content__wraper">
     <div class="dashboard__section__title">
-        <h4>Pengumpulan Link</h4>
+        <h4>Pengumpulan Tugas | Pelatihan Literasi</h4>
         
     </div>
     <div class="row">
@@ -11,15 +16,19 @@
             <div class="tab-pane fade active show" id="projects__one" role="tabpanel" aria-labelledby="projects__one">
                 <div class="col-xl-8 col-md-8 offset-md-2">
                     <div class="loginarea__wraper">
-                        <form action="" method="POST">
+                        <form action="{{ route('siswa_up') }}" method="POST">
                             @csrf
                             <div class="login__form">
-                                <label for="linkblog" class="form__label">Pengumpulan Link Blog</label>
-                            <input type="text" class="common__login__input" placeholder="Masukkan Link Blog Anda" name="link_blog" id="linkblog">
+                                <label for="judul" class="form__label">Pengumpulan Judul Karya Tulis</label>
+                                <input type="text" class="common__login__input" placeholder="Masukkan Judul Karya Tulis Anda" name="judul" id="judul" required>
                             </div>
                             <div class="login__form">
-                                <label for="linkgbook" class="form__label">Pengumpulan Link Gbook</label>
-                            <input type="text" class="common__login__input" placeholder="Masukkan Link Gbook Anda" name="link_gbook" id="linkgbook">
+                                <label for="link_blog" class="form__label">Pengumpulan Link Blog</label>
+                                <input type="text" class="common__login__input" placeholder="Masukkan Link Blog Anda" name="link_blog" id="link_blog" required>
+                            </div>
+                            <div class="login__form">
+                                <label for="link_gbook" class="form__label">Pengumpulan Link Gbook</label>
+                                <input type="text" class="common__login__input" placeholder="Masukkan Link Gbook Anda" name="link_gbook" id="link_gbook" required>
                             </div>
                             <div class="login__button">
                                 <button type="submit" class="dashboard__small__btn__2 dashboard__small__btn__3">
@@ -31,12 +40,17 @@
                 </div>
             </div>
         </div>
-    </div>
-    
+    </div> 
 </div>
+@endif
+@if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
 <div class="dashboard__content__wraper">
     <div class="dashboard__section__title">
-        <h4>Unduh Serfitikat</h4>
+        <h4>Unduh Serfitikat | Pelatihan Literasi</h4>
         
     </div>
         <div class="row">
@@ -68,8 +82,8 @@
                                     <div class="gridarea__bottom">
                                     </div>
                                 </div>
-                                <div class="grid__course__status populerarea__button">                                  
-                                    <a class="default__button" href="#">Unduh Sertifikat</a>
+                                <div class="grid__course__status populerarea__button" style="text-align: center;">                                  
+                                    <button type="button" class="btn btn-{{ $siswa->status ? 'success' : 'secondary' }} btn-lg" href="#" {{ $siswa->status ? 'required' : 'disabled' }}>{{ $siswa->status ? 'Unduh Sertifikat' : 'Tugas Anda Belum Selesai' }}</button>
                                 </div>
                             </div>
                         </div>
