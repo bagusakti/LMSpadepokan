@@ -46,6 +46,7 @@
                             <div class="error__text">
                                 <h3>DATA TERVERIFIKASi</h3>
                                 <p>Terimakasih Sudah Mempercayai Platform Kami</p>
+                                <a href="#" id="verificationLink" class="default__button">Verifikasi Sekarang</a>
                             </div>
                         </div>
                     </div>
@@ -56,6 +57,14 @@
 
 
     <!-- JS here -->
+    <script>
+        document.getElementById('verificationLink').addEventListener('click', function () {
+            // Tambahkan logika redirect sesuai kebutuhan, contoh:
+            window.location.href = 'https://ecertificate.seameo.org/verification';
+        });
+    </script>
+
+
     <script src="{{ asset('assets/js/vendor/modernizr-3.5.0.min.js') }}"></script>
     <script src="{{ asset('assets/js/vendor/jquery-3.6.0.min.js') }}"></script>
     <script src="{{ asset('assets/js/popper.min.js') }}"></script>
