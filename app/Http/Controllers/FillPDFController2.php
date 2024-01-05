@@ -51,10 +51,8 @@ class FillPDFController2 extends Controller
         }
 
         $template = $fpdi->importPage(1);
-
         $size = $fpdi->getTemplateSize($template);
         $fpdi->AddPage($size['orientation'], array($size['width'], $size['height']));
-
         $fpdi->useTemplate($template);
 
         $fpdi->SetFont("helvetica", "B", 40);
@@ -78,7 +76,7 @@ class FillPDFController2 extends Controller
         $fpdi->Text($middleXAdditionalText - ($textWidthAdditional / 2), $middleYAdditionalText, $additionalText);
 
         $verificationInfo = "Verification Info for Sertifikat: $penerimaNama&user_id={$this->user->id}";
-        $qrCodeSize = 100;
+        $qrCodeSize = 45;
         $this->generateQrCode($verificationInfo, self::$qrCodePath, $qrCodeSize);
 
         $this->insertQrCode($fpdi, self::$qrCodePath, $size['height'], $qrCodeSize);
@@ -91,10 +89,8 @@ class FillPDFController2 extends Controller
         }
 
         $template = $fpdi->importPage(1);
-
         $size = $fpdi->getTemplateSize($template);
         $fpdi->AddPage($size['orientation'], array($size['width'], $size['height']));
-
         $fpdi->useTemplate($template);
 
         $fpdi->SetFont("helvetica", "B", 22);
@@ -123,7 +119,7 @@ class FillPDFController2 extends Controller
         $fpdi->Text($middleXLinkGBook, $topLinkGBook, $linkGBook);
 
         $verificationInfo = "Verification Info for Sertifikat: $judul, $linkBlog, $linkGBook&user_id={$this->user->id}";
-        $qrCodeSize = 41;
+        $qrCodeSize = 45;
         $this->generateQrCode($verificationInfo, self::$qrCodePath, $qrCodeSize);
 
         $this->insertQrCode($fpdi, self::$qrCodePath, $size['height'], $qrCodeSize);
@@ -131,8 +127,12 @@ class FillPDFController2 extends Controller
 
     private function generateQrCode(string $data, string $path, int $size)
     {
-        $qrCode = new QrCode($data);
-        $qrCode->setSize(42);
+        // Tambahkan variabel unik untuk memastikan hasil QR code berbeda-beda
+        $uniqueKey = uniqid(); 
+        $dataWithUniqueKey = $data . "&unique_key={$uniqueKey}";
+
+        $qrCode = new QrCode($dataWithUniqueKey);
+        $qrCode->setSize(50);
         $qrCode->setMargin(0);
 
         $writer = new PngWriter();
@@ -145,8 +145,8 @@ class FillPDFController2 extends Controller
     {
         list($qrcodeWidth, $qrcodeHeight) = getimagesize($qrCodePath);
 
-        $qrcodeX = 100;
-        $qrcodeY = -4;
+        $qrcodeX = 252;
+        $qrcodeY = 1;
 
         $fpdi->Image($qrCodePath, $qrcodeX, $qrcodeY, $qrCodeSize, 0, 'PNG');
     }
