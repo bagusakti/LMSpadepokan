@@ -82,8 +82,14 @@
                                     <div class="gridarea__bottom">
                                     </div>
                                 </div>
+<<<<<<< HEAD
                                 <div class="grid__course__status populerarea__button" style="text-align: center;">                                  
                                     <button type="button" class="btn btn-{{ $siswa->status ? 'success' : 'secondary' }} btn-lg" href="#" {{ $siswa->status ? 'required' : 'disabled' }}>{{ $siswa->status ? 'Unduh Sertifikat' : 'Tugas Anda Belum Selesai' }}</button>
+=======
+                                <div class="grid__course__status populerarea__button">                                  
+                                    <a class="default__button" href="{{ route('unduh-sertifikat') }}">Unduh Sertifikat</a>
+
+>>>>>>> c0e1c6fc11c87cc8d9c950922ce026a8489d56ec
                                 </div>
                             </div>
                         </div>

@@ -77,12 +77,12 @@ class FillPDFController2 extends Controller
         $fpdi->Text($middleXPenerima, $topPenerima, $penerimaNama);
 
         // Additional text
-        $additionalText = "SMKN 1 PROBOLINGGO";
+        $additionalText = Auth::user()->institusi;
         $fpdi->SetFont("helvetica", "", 16);
         $textWidthAdditional = $fpdi->GetStringWidth($additionalText);
 
         // Determine position for additional text (centered beneath penerimaNama)
-        $middleXAdditionalText = $middleXPenerima + 66; // Menggunakan middleXPenerima sebagai referensi
+        $middleXAdditionalText = $middleXPenerima + 103 ; // Menggunakan middleXPenerima sebagai referensi
         $middleYAdditionalText = $topPenerima + 10; // Sesuaikan nilai ini sesuai kebutuhan
 
         // Display additional text
