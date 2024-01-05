@@ -29,7 +29,10 @@
                                     </div>
                                     <div class="hreobannerarea__button__2">
                                         <a class="default__button" href="{{ route('login_page') }}">Masuk</a>
-                                        <a class="default__button hreobannerarea__button__3" href="{{ route('register_page') }}">Daftar</a>
+                                        
+										@if (Auth::guest())
+										<a class="default__button hreobannerarea__button__3" href="{{ route('register_page') }}">Daftar</a>
+										@endif
                                     </div>
                                 </div>
                             </div>

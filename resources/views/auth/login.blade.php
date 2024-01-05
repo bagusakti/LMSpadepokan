@@ -11,7 +11,9 @@
                         <div class="loginarea__wraper">
                             <div class="login__heading">
                                 <h5 class="login__title">MASUK</h5>
-                                <p class="login__description">Belum memiliki akun? <a href="{{ route('register_page') }}" >Silahkan Daftar</a></p>
+                                @if (Auth::guest())
+                                    <p class="login__description">Belum memiliki akun? <a href="{{ route('register_page') }}" >Silahkan Daftar</a></p>
+                                @endif
                             </div>
 
 

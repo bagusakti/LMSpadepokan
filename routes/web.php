@@ -12,11 +12,15 @@ Route::get('/siswa/pelatihanliterasi/buat/sertifikat', [FillPDFController2::clas
 
 Route::get('/',[HomeController::class, 'index'])->name('home');
 Route::get('/masuk',[AuthController::class, 'login'])->name('login_page');
-Route::get('/daftar',[AuthController::class, 'register'])->name('register_page');
+// Route::get('/daftar',[AuthController::class, 'register'])->name('register_page');
 Route::post('login',[AuthController::class, 'dologin'])->name('login');
-Route::post('register',[AuthController::class, 'doregister'])->name('register');
+// Route::post('register',[AuthController::class, 'doregister'])->name('register');
 Route::get('logout',[AuthController::class, 'logout'])->name('logout');
 
+Route::group(['middleware' => ['guest']], function () {
+    Route::get('/daftar',[AuthController::class, 'register'])->name('register_page');
+    Route::post('register',[AuthController::class, 'doregister'])->name('register');
+});
 
 Route::group(['middleware' => ['role:admin']], function () {
     Route::get('/admin',[AdminController::class, 'index'])->name('dashboard_admin');
