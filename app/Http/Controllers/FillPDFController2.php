@@ -7,7 +7,6 @@ use setasign\Fpdi\Fpdi;
 use Illuminate\Support\Facades\Auth;
 use Endroid\QrCode\QrCode;
 use Endroid\QrCode\Writer\PngWriter;
-use Endroid\QrCode\ErrorCorrectionLevel\ErrorCorrectionLevelLow;
 
 class FillPDFController2 extends Controller
 {
@@ -31,98 +30,79 @@ class FillPDFController2 extends Controller
             return response()->json(['error' => 'PDF file not found'], 404);
         }
 
-        $fpdi = new Fpdi;
+        $pdf = new Fpdi;
 
-        $this->fillPDF($fpdi, $pdfFile1, $penerimaNama);
+        // Import PDF 1
+        $pdf->setSourceFile($pdfFile1);
+        $template1 = $pdf->importPage(1);
+        $size1 = $pdf->getTemplateSize($template1);
+        $pdf->AddPage($size1['orientation'], [$size1['width'], $size1['height']]);
+        $pdf->useTemplate($template1);
 
-        $fpdi->AddPage();
+        $this->fillPDF($pdf, $penerimaNama);
 
-        $this->fillPDFWithLink($fpdi, $pdfFile2, $judul, $linkBlog, $linkGBook);
+        // Import PDF 2
+        $pdf->setSourceFile($pdfFile2);
+        $template2 = $pdf->importPage(1);
+        $size2 = $pdf->getTemplateSize($template2);
+        $pdf->AddPage($size2['orientation'], [$size2['width'], $size2['height']]);
+        $pdf->useTemplate($template2);
 
-        $fpdi->Output($outputfile, 'F');
+        $this->fillPDFWithLink($pdf, $judul, $linkBlog, $linkGBook);
+
+        $pdf->Output($outputfile, 'F');
 
         return response()->file($outputfile);
     }
 
-    public function fillPDF($fpdi, $file, $penerimaNama)
+    public function fillPDF($pdf, $penerimaNama)
     {
-        if (!$fpdi->setSourceFile($file)) {
-            die("Error: Could not open PDF file");
-        }
+        $pdf->SetFont("helvetica", "B", 40);
+        $textWidthPenerima = $pdf->GetStringWidth($penerimaNama);
 
-        $template = $fpdi->importPage(1);
-        $size = $fpdi->getTemplateSize($template);
-        $fpdi->AddPage($size['orientation'], array($size['width'], $size['height']));
-        $fpdi->useTemplate($template);
-
-        $fpdi->SetFont("helvetica", "B", 40);
-        $textWidthPenerima = $fpdi->GetStringWidth($penerimaNama);
+        $template = $pdf->importPage(1);
+        $size = $pdf->getTemplateSize($template);
 
         $pageWidth = $size['width'];
+        $pageHeight = $size['height'];
         $middleXPenerima = ($pageWidth - $textWidthPenerima) / 2;
-        $topPenerima = ($size['height'] - 15) / 2;
+        $topPenerima = ($pageHeight - 15) / 2;
 
-        $fpdi->SetTextColor(25, 26, 25);
-        $fpdi->Text($middleXPenerima, $topPenerima, $penerimaNama);
+        $pdf->SetTextColor(25, 26, 25);
+        $pdf->Text($middleXPenerima, $topPenerima, $penerimaNama);
 
-        $additionalText = $this->user->institusi;
-        $fpdi->SetFont("helvetica", "", 16);
-
-        $textWidthAdditional = $fpdi->GetStringWidth($additionalText);
-
-        $middleXAdditionalText = $pageWidth / 2;
-        $middleYAdditionalText = $topPenerima + 10;
-
-        $fpdi->Text($middleXAdditionalText - ($textWidthAdditional / 2), $middleYAdditionalText, $additionalText);
+        // Tambahkan elemen-elemen lain sesuai kebutuhan Anda
 
         $verificationInfo = "Verification Info for Sertifikat: $penerimaNama&user_id={$this->user->id}";
         $qrCodeSize = 45;
         $this->generateQrCode($verificationInfo, self::$qrCodePath, $qrCodeSize);
 
-        $this->insertQrCode($fpdi, self::$qrCodePath, $size['height'], $qrCodeSize);
+        $this->insertQrCode($pdf, self::$qrCodePath, $pageHeight, $qrCodeSize);
     }
 
-    public function fillPDFWithLink($fpdi, $file, $judul, $linkBlog, $linkGBook)
+    public function fillPDFWithLink($pdf, $judul, $linkBlog, $linkGBook)
     {
-        if (!$fpdi->setSourceFile($file)) {
-            die("Error: Could not open PDF file");
-        }
+        $pdf->SetFont("helvetica", "B", 22);
+        $textWidthJudul = $pdf->GetStringWidth($judul);
 
-        $template = $fpdi->importPage(1);
-        $size = $fpdi->getTemplateSize($template);
-        $fpdi->AddPage($size['orientation'], array($size['width'], $size['height']));
-        $fpdi->useTemplate($template);
+        $template = $pdf->importPage(1);
+        $size = $pdf->getTemplateSize($template);
 
-        $fpdi->SetFont("helvetica", "B", 22);
-        $textWidthJudul = $fpdi->GetStringWidth($judul);
-
-        $fpdi->SetFont("helvetica", "B", 22);
-        $textWidthLinkBlog = $fpdi->GetStringWidth($linkBlog);
-
-        $fpdi->SetFont("helvetica", "B", 22);
-        $textWidthLinkGBook = $fpdi->GetStringWidth($linkGBook);
-
+        $pageWidth = $size['width'];
+        $pageHeight = $size['height'];
         $middleXJudul = 130;
         $topJudul = 87;
 
-        $middleXLinkBlog = 130;
-        $topLinkBlog = $size['height'] - 110;
+        $pdf->SetTextColor(25, 26, 25);
+        $pdf->Text($middleXJudul, $topJudul, $judul);
 
-        $middleXLinkGBook = 130;
-        $topLinkGBook = $size['height'] - 96;
-
-        $fpdi->SetTextColor(25, 26, 25);
-        $fpdi->Text($middleXJudul, $topJudul, $judul);
-
-        $fpdi->Text($middleXLinkBlog, $topLinkBlog, $linkBlog);
-
-        $fpdi->Text($middleXLinkGBook, $topLinkGBook, $linkGBook);
+        // Tambahkan elemen-elemen lain sesuai kebutuhan Anda
 
         $verificationInfo = "Verification Info for Sertifikat: $judul, $linkBlog, $linkGBook&user_id={$this->user->id}";
         $qrCodeSize = 45;
         $this->generateQrCode($verificationInfo, self::$qrCodePath, $qrCodeSize);
 
-        $this->insertQrCode($fpdi, self::$qrCodePath, $size['height'], $qrCodeSize);
+        $this->insertQrCode($pdf, self::$qrCodePath, $pageHeight, $qrCodeSize);
     }
 
     private function generateQrCode(string $data, string $path, int $size)
@@ -141,13 +121,13 @@ class FillPDFController2 extends Controller
         file_put_contents($path, $result->getString());
     }
 
-    private function insertQrCode($fpdi, $qrCodePath, $pageHeight, $qrCodeSize)
+    private function insertQrCode($pdf, $qrCodePath, $pageHeight, $qrCodeSize)
     {
         list($qrcodeWidth, $qrcodeHeight) = getimagesize($qrCodePath);
 
         $qrcodeX = 252;
         $qrcodeY = 1;
 
-        $fpdi->Image($qrCodePath, $qrcodeX, $qrcodeY, $qrCodeSize, 0, 'PNG');
+        $pdf->Image($qrCodePath, $qrcodeX, $qrcodeY, $qrCodeSize, 0, 'PNG');
     }
 }
