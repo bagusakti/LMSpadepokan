@@ -56,54 +56,81 @@ class FillPDFController2 extends Controller
     }
 
     public function fillPDF($pdf, $penerimaNama)
-    {
-        $pdf->SetFont("helvetica", "B", 40);
-        $textWidthPenerima = $pdf->GetStringWidth($penerimaNama);
+{
+    $pdf->SetFont("helvetica", "B", 40);
+    $textWidthPenerima = $pdf->GetStringWidth($penerimaNama);
 
-        $template = $pdf->importPage(1);
-        $size = $pdf->getTemplateSize($template);
+    $template = $pdf->importPage(1);
+    $size = $pdf->getTemplateSize($template);
 
-        $pageWidth = $size['width'];
-        $pageHeight = $size['height'];
-        $middleXPenerima = ($pageWidth - $textWidthPenerima) / 2;
-        $topPenerima = ($pageHeight - 15) / 2;
+    $pageWidth = $size['width'];
+    $pageHeight = $size['height'];
+    $middleXPenerima = ($pageWidth - $textWidthPenerima) / 2;
+    $topPenerima = ($pageHeight - 15) / 2;
 
-        $pdf->SetTextColor(25, 26, 25);
-        $pdf->Text($middleXPenerima, $topPenerima, $penerimaNama);
+    $pdf->SetTextColor(25, 26, 25);
+    $pdf->Text($middleXPenerima, $topPenerima, $penerimaNama);
 
-        // Tambahkan elemen-elemen lain sesuai kebutuhan Anda
+    // Tambahkan instansi
+    $instansi = $this->user->institusi; // Gantilah dengan instansi yang sesuai
+    $pdf->SetFont("helvetica", "", 18);
 
-        $verificationInfo = "Verification Info for Sertifikat: $penerimaNama&user_id={$this->user->id}";
-        $qrCodeSize = 45;
-        $this->generateQrCode($verificationInfo, self::$qrCodePath, $qrCodeSize);
+    // Hitung lebar teks instansi
+    $textWidthInstansi = $pdf->GetStringWidth($instansi);
 
-        $this->insertQrCode($pdf, self::$qrCodePath, $pageHeight, $qrCodeSize);
-    }
+    // Hitung posisi tengah instansi
+    $middleXInstansi = ($pageWidth - $textWidthInstansi) / 2;
+    $topInstansi = $topPenerima + 10; // Sesuaikan dengan posisi yang diinginkan
+    $pdf->Text($middleXInstansi, $topInstansi, $instansi);
+
+    // Tambahkan elemen-elemen lain sesuai kebutuhan Anda
+
+    $verificationInfo = "Verification Info for Sertifikat: $penerimaNama&user_id={$this->user->id}";
+    $qrCodeSize = 45;
+    $this->generateQrCode($verificationInfo, self::$qrCodePath, $qrCodeSize);
+
+    $this->insertQrCode($pdf, self::$qrCodePath, $pageHeight, $qrCodeSize);
+}
+
+
 
     public function fillPDFWithLink($pdf, $judul, $linkBlog, $linkGBook)
-    {
-        $pdf->SetFont("helvetica", "B", 22);
-        $textWidthJudul = $pdf->GetStringWidth($judul);
+{
+    $pdf->SetFont("helvetica", "B", 22);
+    $textWidthJudul = $pdf->GetStringWidth($judul);
 
-        $template = $pdf->importPage(1);
-        $size = $pdf->getTemplateSize($template);
+    $template = $pdf->importPage(1);
+    $size = $pdf->getTemplateSize($template);
 
-        $pageWidth = $size['width'];
-        $pageHeight = $size['height'];
-        $middleXJudul = 130;
-        $topJudul = 87;
+    $pageWidth = $size['width'];
+    $pageHeight = $size['height'];
+    $middleXJudul = 130;
+    $topJudul = 87;
 
-        $pdf->SetTextColor(25, 26, 25);
-        $pdf->Text($middleXJudul, $topJudul, $judul);
+    $pdf->SetTextColor(25, 26, 25);
+    $pdf->Text($middleXJudul, $topJudul, $judul);
 
-        // Tambahkan elemen-elemen lain sesuai kebutuhan Anda
+    // Tambahkan elemen-elemen lain sesuai kebutuhan Anda
 
-        $verificationInfo = "Verification Info for Sertifikat: $judul, $linkBlog, $linkGBook&user_id={$this->user->id}";
-        $qrCodeSize = 45;
-        $this->generateQrCode($verificationInfo, self::$qrCodePath, $qrCodeSize);
+    // Tambahkan link blog
+    $pdf->SetFont("helvetica", "B", 22);
+    $topLinkBlog = $topJudul + 14; // Sesuaikan dengan posisi yang diinginkan
+    $pdf->Text($middleXJudul, $topLinkBlog, $linkBlog);
 
-        $this->insertQrCode($pdf, self::$qrCodePath, $pageHeight, $qrCodeSize);
-    }
+    // Tambahkan link GBook
+    $pdf->SetFont("helvetica", "B", 22);
+    $topLinkGBook = $topLinkBlog + 14; // Sesuaikan dengan posisi yang diinginkan
+    $pdf->Text($middleXJudul, $topLinkGBook, $linkGBook);
+
+    // Tambahkan elemen-elemen lain sesuai kebutuhan Anda
+
+    $verificationInfo = "Verification Info for Sertifikat: $judul, $linkBlog, $linkGBook&user_id={$this->user->id}";
+    $qrCodeSize = 45;
+    $this->generateQrCode($verificationInfo, self::$qrCodePath, $qrCodeSize);
+
+    $this->insertQrCode($pdf, self::$qrCodePath, $pageHeight, $qrCodeSize);
+}
+
 
     private function generateQrCode(string $data, string $path, int $size)
     {
