@@ -54,6 +54,12 @@ class FillPDFController2 extends Controller
 
         return response()->file($outputfile);
     }
+    public function verification()
+    {
+        // Lakukan logika verifikasi di sini
+        // Contoh: Menampilkan halaman verifikasi
+        return view('pages.verificationqr'); // Sesuaikan dengan nama view yang akan Anda buat
+    }
 
     public function fillPDF($pdf, $penerimaNama)
 {
@@ -132,21 +138,24 @@ class FillPDFController2 extends Controller
 }
 
 
-    private function generateQrCode(string $data, string $path, int $size)
-    {
-        // Tambahkan variabel unik untuk memastikan hasil QR code berbeda-beda
-        $uniqueKey = uniqid(); 
-        $dataWithUniqueKey = $data . "&unique_key={$uniqueKey}";
+private function generateQrCode(string $data, string $path, int $size)
+{
+    // Tambahkan variabel unik untuk memastikan hasil QR code berbeda-beda
+    $uniqueKey = uniqid();
+    $dataWithUniqueKey = $data . "&unique_key={$uniqueKey}";
 
-        $qrCode = new QrCode($dataWithUniqueKey);
-        $qrCode->setSize(50);
-        $qrCode->setMargin(0);
+    // Ganti URL ini sesuai dengan URL yang Anda buat untuk verifikasi
+    $verificationURL = route('verification', ['user_id' => $this->user->id]);
 
-        $writer = new PngWriter();
-        $result = $writer->write($qrCode);
+    $qrCode = new QrCode($verificationURL);
+    $qrCode->setSize(50);
+    $qrCode->setMargin(0);
 
-        file_put_contents($path, $result->getString());
-    }
+    $writer = new PngWriter();
+    $result = $writer->write($qrCode);
+
+    file_put_contents($path, $result->getString());
+}
 
     private function insertQrCode($pdf, $qrCodePath, $pageHeight, $qrCodeSize)
     {

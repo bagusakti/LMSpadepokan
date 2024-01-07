@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Gema E-Learning | {{ $title }} </title>
+    <title>Gema E-Learning | Verification QR  </title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -30,7 +30,19 @@
           document.documentElement.classList.remove("is_dark");
         } 
     </script>
+
+
+
+     <script>
+        document.getElementById('verificationLink').addEventListener('click', function () {
+            window.location.href = '{{ route("verification") }}'; // Ganti dengan rute yang sesuai di aplikasi Laravel Anda
+        });
+    </script>
+
 </head>
+
+
+
 
 <body class="body__wrapper">
 
@@ -40,13 +52,13 @@
                 <div class="row">
                     <div class="col-xl-8 col-lg-10 col-sm-12 col-12 m-auto">
                         <div class="errorarea__inner" data-aos="fade-up">
-                            <div class="error__img">
+                            <div>
                                 <img src="{{ asset('assets/img/icon/virtual-reality.png') }}" alt="error">
                             </div>
                             <div class="error__text">
                                 <h3>DATA TERVERIFIKASi</h3>
                                 <p>Terimakasih Sudah Mempercayai Platform Kami</p>
-                                <a href="#" id="verificationLink" class="default__button">Verifikasi Sekarang</a>
+                                {{-- <a href="#" id="verificationLink" class="default__button">Verifikasi Sekarang</a> --}}
                             </div>
                         </div>
                     </div>
@@ -57,12 +69,12 @@
 
 
     <!-- JS here -->
-    <script>
+    {{-- <script>
         document.getElementById('verificationLink').addEventListener('click', function () {
             // Tambahkan logika redirect sesuai kebutuhan, contoh:
             window.location.href = 'https://ecertificate.seameo.org/verification';
         });
-    </script>
+    </script> --}}
 
 
     <script src="{{ asset('assets/js/vendor/modernizr-3.5.0.min.js') }}"></script>
