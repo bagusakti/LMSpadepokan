@@ -45,12 +45,12 @@ class TrainerController extends Controller
                 $siswas->save();
                 $user->save();
             }});
-                return back()->with('success', 'status siswa berhasil diperbarui');
+                return back()->with('success1', 'status siswa berhasil diperbarui');
     }
 
     public function resettugas($id) {
         $tugas = Tugas::find($id);
         $tugas->delete();
-        return back()->with('success', 'Tugas Berhasil Dihapus Dan Status Tugas Siswa Telah Direset.');
+        return back()->with('success2', 'Tugas Berhasil Dihapus Dan Status Tugas Siswa Telah Direset.');
     }
 }

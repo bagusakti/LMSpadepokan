@@ -6,6 +6,11 @@
         <h4>Data Absensi</h4>
     </div>
 </div>
+@if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success1') }}
+    </div>
+@endif
 <div class="dashboard__content__wraper">
     <div class="dashboard__section__title">
         <h4>Data Siswa</h4>
@@ -51,7 +56,7 @@
 </div>
 @if (session('success'))
     <div class="alert alert-success">
-        {{ session('success') }}
+        {{ session('success2') }}
     </div>
 @endif
 <div class="dashboard__content__wraper">
