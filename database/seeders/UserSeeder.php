@@ -33,6 +33,17 @@ class UserSeeder extends Seeder
             'password' => Hash::make('Bagusakti08123'),
             'status' => 1
         ]);
+
+        $trainer = User::create([
+            'name' => 'Ronald Trainer',
+            'email' => 'ronald@gmail.com',
+            'institusi' => 'TimPadepokan',
+            'whatsapp' => '081231231232',
+            'password' => Hash::make('Ronald005'),
+            'status' => 1
+        ]);
+
+        
         $trainer->assignRole('trainer');
 
         $siswa = User::create([

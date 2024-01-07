@@ -46,11 +46,7 @@
                             <div class="error__text">
                                 <h3>Oops.. Sepertinya Kamu Tersesat !</h3>
                                 <p>Halaman Yang Kamu Cari Tidak Ditemukan, Silahkan Login Kembali</p>
-                            </div>
-                            <div class="error__button">
-                                <a class="default__button" href="{{ route('logout') }}">Kembali ke Halaman Utama
-                                <i class="icofont-simple-right"></i>
-                            </a>
+                                <a href="{{ route('logout') }}" class="default__button">Kembali ke Halaman Utama</a>
                             </div>
                         </div>
                     </div>
@@ -58,7 +54,6 @@
             </div>
         </div>
     </main>
-
 
     <!-- JS here -->
     <script src="{{ asset('assets/js/vendor/modernizr-3.5.0.min.js') }}"></script>

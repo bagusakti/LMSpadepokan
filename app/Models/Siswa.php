@@ -18,4 +18,12 @@ class Siswa extends Model
         'institusi',
         'whatsapp',
     ];
+
+    // User.php
+
+public function tugas()
+{
+    return $this->hasMany(Tugas::class);
+}
+
 }
