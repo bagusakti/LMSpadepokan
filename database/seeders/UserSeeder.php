@@ -30,7 +30,7 @@ class UserSeeder extends Seeder
             'email' => 'mungkintrainer@gmail.com',
             'institusi' => 'TimPadepokan',
             'whatsapp' => '081231231232',
-            'password' => Hash::make('trainerrawr1122'),
+            'password' => Hash::make('paneltrainer'),
             'status' => 1
         ]);
 
