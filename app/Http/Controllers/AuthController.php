@@ -30,14 +30,14 @@ class AuthController extends Controller
             'password' => ['required'],
         ]);
         if (Auth::attempt($credentials)) {
-            $role = Auth::user()->getRoleNames();
+            $user = Auth::user();
             $request->session()->regenerate();
-
-            if ($role[0] == 'admin') {
+    
+            if ($user->hasRole('admin')) {
                 return redirect()->route('dashboard_admin');
-            } elseif($role[0] == 'trainer') {
+            } elseif($user->hasRole('trainer')) {
                 return redirect()->route('dashboard_trainer');
-            } elseif($role[0] == 'siswa') {
+            } elseif($user->hasRole('siswa')) {
                 return redirect()->route('dashboard_siswa');
             }
         }
