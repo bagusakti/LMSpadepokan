@@ -34,7 +34,7 @@
 										<a class="default__button hreobannerarea__button__3" href="{{ route('register_page') }}">Daftar</a>
 										@endif
 
-										@if ($users->hasAnyRole('admin', 'trainer', 'siswa'))
+										@if (Auth::check() && $users->hasAnyRole('admin', 'trainer', 'siswa'))
 										<a href="{{ route('logout') }}" class="default__button hreobannerarea__button__3">Logout</a>		
 										@endif
                                     </div>
