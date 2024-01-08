@@ -9,7 +9,7 @@
 <div class="dashboard__content__wraper">
     <div class="dashboard__section__title">
         <h4>Pengumpulan Tugas | Pelatihan Literasi</h4>
-        
+
     </div>
     <div class="row">
         <div class="tab-content tab__content__wrapper" id="myTabContent" data-aos="fade-up">
@@ -34,7 +34,7 @@
                                 <button type="submit" class="dashboard__small__btn__2 dashboard__small__btn__3">
                                     <i class="icofont-paper-plane"></i> Kumpulkan Tugas
                                 </button>
-                            </div>                            
+                            </div>
                         </form>
                         <br>
                         <p style="color: red;">*Pastikan Link yang dikumpulkan dalam bentuk Shortlink !! (contoh: http://bit.ly/3Hc7MlC )</p>
@@ -42,7 +42,7 @@
                 </div>
             </div>
         </div>
-    </div> 
+    </div>
 </div>
 @endif
 @if (session('success'))
@@ -53,7 +53,7 @@
 <div class="dashboard__content__wraper">
     <div class="dashboard__section__title">
         <h4>Unduh Serfitikat | Pelatihan Literasi</h4>
-        
+
     </div>
         <div class="row">
             <div class="tab-content tab__content__wrapper aos-init aos-animate" id="myTabContent" data-aos="fade-up">
@@ -69,7 +69,7 @@
                                     <div class="gridarea__small__icon">
                                         <a href="#"><i class="icofont-heart-alt"></i></a>
                                     </div>
-        
+
                                 </div>
                                 <div class="gridarea__content">
                                     <div class="gridarea__list">
@@ -79,23 +79,23 @@
                                         <p>Tingkatkan keterampilan membaca, menulis, dan memahami informasi dengan metode yang menyenangkan. </p>
                                     </div>
                                     <div class="gridarea__price">
-                                        
+
                                     </div>
                                     <div class="gridarea__bottom">
                                     </div>
                                 </div>
-                                <div class="grid__course__status populerarea__button" style="text-align: center;">                                  
+                                <div class="grid__course__status populerarea__button" style="text-align: center;">
                                     <button type="button" class="btn btn-{{ $siswa->status ? 'success' : 'secondary' }} btn-lg" onclick="window.location.href='{{ url('/siswa/pelatihanliterasi/unduh') }}'" {{ $siswa->status ? 'required' : 'disabled' }}>
                                         {{ $siswa->status ? 'Unduh Sertifikat' : 'Tugas Anda Belum Selesai' }}
                                     </button>
-                                    
+
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>       
+        </div>
     </div>
 </div>
 
