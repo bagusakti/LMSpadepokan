@@ -2,7 +2,7 @@
 
 @section('content')
 @php
-    $submission = \App\models\Tugas::where('user_id', auth()->id())->first();
+    $submission = \App\Models\Tugas::where('user_id', auth()->id())->first();
 @endphp
 
 @if (!isset($submission->status_tugas) || !$submission->status_tugas)
@@ -32,10 +32,12 @@
                             </div>
                             <div class="login__button">
                                 <button type="submit" class="dashboard__small__btn__2 dashboard__small__btn__3">
-                                    <i class="icofont-paper-plane"></i> Submit
+                                    <i class="icofont-paper-plane"></i> Kumpulkan Tugas
                                 </button>
                             </div>                            
                         </form>
+                        <br>
+                        <p style="color: red;">*Pastikan Link yang dikumpulkan dalam bentuk Shortlink !! (contoh: http://bit.ly/3Hc7MlC )</p>
                     </div>
                 </div>
             </div>

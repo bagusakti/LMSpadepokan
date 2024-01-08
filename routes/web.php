@@ -9,9 +9,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FillPDFController2;
 use App\Http\Controllers\VerificationController;
 
-Route::get('/siswa/pelatihanliterasi/unduh', [FillPDFController2::class, 'process'])->name('unduh_sertifikat');
 
-Route::get('/siswa/pelatihan/verification', [VerificationController::class, 'verification'])->name('verification');
 
 
 
@@ -48,6 +46,8 @@ Route::group(['middleware' => ['role:siswa']], function () {
     Route::get('/siswa',[SiswaController::class, 'index'])->name('dashboard_siswa');
     Route::get('/siswa/profil',[SiswaController::class, 'profil'])->name('siswa_side_profilsiswa');
     Route::get('/siswa/pelatihanliterasi',[SiswaController::class, 'pelatihanliterasi'])->name('siswa_side_pelatihanliterasi');
+    Route::get('/siswa/pelatihanliterasi/unduh', [FillPDFController2::class, 'process'])->name('unduh_sertifikat');
+    Route::get('/siswa/pelatihan/verification', [VerificationController::class, 'verification'])->name('verification');
     Route::post('up', [SiswaController::class, 'uplink'])->name('siswa_up');
 });
 

@@ -30,16 +30,16 @@ class UserSeeder extends Seeder
             'email' => 'mungkintrainer@gmail.com',
             'institusi' => 'TimPadepokan',
             'whatsapp' => '081231231232',
-            'password' => Hash::make('Bagusakti08123'),
+            'password' => Hash::make('trainerrawr1122'),
             'status' => 1
         ]);
 
         $trainer = User::create([
-            'name' => 'Ronald Trainer',
-            'email' => 'ronald@gmail.com',
-            'institusi' => 'TimPadepokan',
+            'name' => 'Azriel Jonathan R.',
+            'email' => 'AzrielTrainer@gmail.com',
+            'institusi' => 'Padepokan Trainer',
             'whatsapp' => '081231231232',
-            'password' => Hash::make('Ronald005'),
+            'password' => Hash::make('AzrielRamadhan321'),
             'status' => 1
         ]);
 

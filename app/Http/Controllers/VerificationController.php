@@ -25,7 +25,7 @@ class VerificationController extends Controller
             ]);
         } else {
             // Jika verifikasi gagal, mungkin Anda ingin menampilkan halaman lain atau memberikan pesan kesalahan
-            return view('');
+            return view('pages.error403');
         }
     }
 }

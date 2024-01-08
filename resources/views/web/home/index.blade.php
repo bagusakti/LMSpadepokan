@@ -33,6 +33,10 @@
 										@if (Auth::guest())
 										<a class="default__button hreobannerarea__button__3" href="{{ route('register_page') }}">Daftar</a>
 										@endif
+
+										@if (Auth::user())
+										<a href="{{ route('logout') }}" class="default__button hreobannerarea__button__3">Logout</a>		
+										@endif
                                     </div>
                                 </div>
                             </div>
