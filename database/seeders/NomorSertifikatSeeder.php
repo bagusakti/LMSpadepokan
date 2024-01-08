@@ -12,6 +12,6 @@ class NomorSertifikatSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+
     }
 }
