@@ -28,7 +28,16 @@
                                         <p>Peluang Baru, Wawasan Baru, Prestasi Baru <br>Temukan Potensi Anda Melalui Pembelajaran Interaktif </p>
                                     </div>
                                     <div class="hreobannerarea__button__2">
+										@if (Auth::guest())
                                         <a class="default__button" href="{{ route('login_page') }}">Masuk</a>
+											@elseif(Auth::check() && $users->hasRole('admin'))
+											<a class="default__button" href="{{ route('dashboard_admin') }}">Masuk (Dashboard Admin)</a>
+												@elseif(Auth::check() && $users->hasRole('trainer'))
+												<a class="default__button" href="{{ route('dashboard_trainer') }}">Masuk (Dashboard Trainer)</a>
+													@elseif(Auth::check() && $users->hasRole('siswa'))
+													<a class="default__button" href="{{ route('dashboard_siswa') }}">Masuk (Dashboard)</a>
+										@endif
+
                                         
 										@if (Auth::guest())
 										<a class="default__button hreobannerarea__button__3" href="{{ route('register_page') }}">Daftar</a>
@@ -71,7 +80,7 @@
 				<div class="row">
 					<div class="section__title text-center" data-aos="fade-up">
 						<div class="section__title__button">
-							<div class="default__small__button">#Research</div>
+							<div class="default__small__button">Pelatihan Kami</div>
 						</div>
 						<div class="section__title__heading heading__underline">
 							<h2>Komunitas Belajar Online <span>Berbagi Pengetahuan</span> <br>Membangun Inspirasi.</h2>
@@ -83,13 +92,14 @@
 					<div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12 mb-4" data-aos="fade-up">
 						<div class="single__blog__wraper">
 							<div class="single__blog__img">
-								<img src="{{asset('assets/img/program/ai_1.jpg')}}" alt="blog">
+								<img src="{{asset('assets/img/program/literasi.jpg')}}" alt="blog">
 							</div>
 							<div class="single__blog__content">
 								<p>Literasi</p>
-								<h4> <a href="#">PELATIHAN LITERASI</a></h4>
+								<h4> <a href="{{ route('literasi') }}">PELATIHAN LITERASI</a></h4>
 								<div class="single__blog__bottom__button">
-									<a href="#">Read More </a>
+									<p style="color: white">Meningkatkan Literasi dan keterampilan dalam pengelolaan kata dan desain grafis</p>
+									<a href="{{ route('literasi') }}">Baca Selengkapnya</a>
 								</div>
 							</div>
 						</div>
@@ -104,7 +114,7 @@
 								<p>Technopreneur</p>
 								<h4> <a href="#">LOMBA TECHNOPRENEUR</a></h4>
 								<div class="single__blog__bottom__button">
-									<a href="#">Read More </a>
+									<a href="#">Coming Soon </a>
 								</div>
 							</div>
 						</div>
@@ -119,7 +129,7 @@
 								<p>Game</p>
 								<h4> <a href="#">LOMBA PEMBUATAN GAME</a></h4>
 								<div class="single__blog__bottom__button">
-									<a href="#">Read More </a>
+									<a href="#">Coming Soon </a>
 								</div>
 							</div>
 						</div>
@@ -134,7 +144,7 @@
 								<p>Golden Ticket</p>
 								<h4> <a href="#">PERSIAPAN PROGRAM GOLDEN TICKET</a></h4>
 								<div class="single__blog__bottom__button">
-									<a href="#">Read More </a>
+									<a href="#">Coming Soon </a>
 								</div>
 							</div>
 						</div>
@@ -150,7 +160,7 @@
 								<p>game</p>
 								<h4> <a href="#">SIMULASI GAME NIB</a></h4>
 								<div class="single__blog__bottom__button">
-									<a href="#">Read More </a>
+									<a href="#">Coming Soon </a>
 								</div>
 							</div>
 						</div>
@@ -165,7 +175,7 @@
 								<p>Metaverse</p>
 								<h4> <a href="#">PELATIHAN METAVERSE DASAR</a></h4>
 								<div class="single__blog__bottom__button">
-									<a href="#">Read More </a>
+									<a href="#">Coming Soon </a>
 								</div>
 							</div>
 						</div>
@@ -180,7 +190,7 @@
 								<p>Metaverse</p>
 								<h4> <a href="#">PELATIHAN METAVERSE INTERMEDIETE</a></h4>
 								<div class="single__blog__bottom__button">
-									<a href="#">Read More </a>
+									<a href="#">Coming Soon </a>
 								</div>
 							</div>
 						</div>
@@ -195,7 +205,7 @@
 								<p>Metaverse</p>
 								<h4> <a href="#">PELATIHAN METAVERSE LANJUT</a></h4>
 								<div class="single__blog__bottom__button">
-									<a href="#">Read More </a>
+									<a href="#">Coming Soon </a>
 								</div>
 							</div>
 						</div>
@@ -212,7 +222,7 @@
 								<p>Story Telling</p>
 								<h4> <a href="#">PELATIHAN STORY TELLING</a></h4>
 								<div class="single__blog__bottom__button">
-									<a href="#">Read More </a>
+									<a href="#">Coming Soon </a>
 								</div>
 							</div>
 						</div>
@@ -227,7 +237,7 @@
 								<p>Web Development</p>
 								<h4> <a href="#">PELATIHAN FRONTEND & BACKEND</a></h4>
 								<div class="single__blog__bottom__button">
-									<a href="#">Read More </a>
+									<a href="#">Coming Soon </a>
 								</div>
 							</div>
 						</div>

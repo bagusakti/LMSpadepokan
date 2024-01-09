@@ -20,11 +20,12 @@ use App\Http\Controllers\VerificationController;
 
 
 Route::get('/',[HomeController::class, 'index'])->name('home');
+Route::get('/pelatihanliterasi',[HomeController::class, 'literasi'])->name('literasi');
 Route::get('/masuk',[AuthController::class, 'login'])->name('login_page');
-// Route::get('/daftar',[AuthController::class, 'register'])->name('register_page');
 Route::post('login',[AuthController::class, 'dologin'])->name('login');
-// Route::post('register',[AuthController::class, 'doregister'])->name('register');
 Route::get('logout',[AuthController::class, 'logout'])->name('logout');
+// Route::get('/daftar',[AuthController::class, 'register'])->name('register_page');
+// Route::post('register',[AuthController::class, 'doregister'])->name('register');
 
 Route::group(['middleware' => ['guest']], function () {
     Route::get('/daftar',[AuthController::class, 'register'])->name('register_page');

@@ -50,6 +50,8 @@
         {{ session('success') }}
     </div>
 @endif
+
+@if ((isset($submission->status_tugas) && $submission->status_tugas))
 <div class="dashboard__content__wraper">
     <div class="dashboard__section__title">
         <h4>Unduh Serfitikat | Pelatihan Literasi</h4>
@@ -62,7 +64,7 @@
                         <div class="col-xl-4 col-lg-6 col-md-6 col-12">
                             <div class="gridarea__wraper">
                                 <div class="gridarea__img">
-                                    <a href=""><img src="{{ asset('assets/img/grid/grid_1.png') }}" alt="grid"></a>
+                                    <a href=""><img src="{{ asset('assets/img/program/literasi.jpg') }}" alt="grid"></a>
                                     <div class="gridarea__small__button">
                                         <div class="grid__badge">Pelatihan Literasi</div>
                                     </div>
@@ -77,6 +79,8 @@
                                     <div class="gridarea__heading">
                                         <h3><a href="">Pelatihan Literasi</a></h3>
                                         <p>Tingkatkan keterampilan membaca, menulis, dan memahami informasi dengan metode yang menyenangkan. </p>
+                                        <p style="color: red;" >{{ $siswa->status ? '' : '*Tugas sedang dikoreksi oleh trainer' }}</p>
+                                        
                                     </div>
                                     <div class="gridarea__price">
 
@@ -86,7 +90,7 @@
                                 </div>
                                 <div class="grid__course__status populerarea__button" style="text-align: center;">
                                     <button type="button" class="btn btn-{{ $siswa->status ? 'success' : 'secondary' }} btn-lg" onclick="window.location.href='{{ url('/siswa/pelatihanliterasi/unduh') }}'" {{ $siswa->status ? 'required' : 'disabled' }}>
-                                        {{ $siswa->status ? 'Unduh Sertifikat' : 'Tugas Anda Belum Selesai' }}
+                                        {{ $siswa->status ? 'Unduh Sertifikat' : 'Tugas Sedang Dikoreksi' }}
                                     </button>
 
                                 </div>
@@ -98,6 +102,7 @@
         </div>
     </div>
 </div>
+@endif
 
 
 @endsection
