@@ -1,8 +1,22 @@
 @extends('web.partials.main')
 
 @section('content')
-<div class="aboutarea__5 sp_bottom_100 sp_top_100">
+
+<div class="aboutarea__5 sp_bottom_ sp_top_100 ml" style="margin-left: 12%">
+    <div class="row">
+        <div class="col-xl-6 col-lg-6 mt-20">
+            <div class="btn btn-primary">
+                <a href="{{ route('home') }}">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                    Halaman Utama</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="aboutarea__5 sp_bottom_100 sp_top_40">
     <div class="container">
+        
         <div class="row">
             <div class="col-xl-6 col-lg-6" data-aos="fade-up">
                 <div class="aboutarea__5__img" data-tilt>
@@ -338,7 +352,7 @@
                                                 <td></td>
                                                 <td></td>
                                                 <td>
-                                                    <span class="{{ $siswa->status ? 'btn btn-success' : 'btn btn-danger' }}">{{ $siswa->status ? 'Lulus' : 'Belum Lulus' }}</span>
+                                                    <span class="{{ $siswa->status ? 'badge bg-success' : 'badge bg-danger' }}">{{ $siswa->status ? 'Lulus' : 'Belum Lulus' }}</span>
                                                 </td>
                     
                                                 

@@ -3,7 +3,7 @@
 @section('content')
 <div class="dashboard__content__wraper">
     <div class="dashboard__selection__title">
-        <h4>Data Absensi</h4>
+        <h4>Data Absensi (Segera Hadir!)</h4>
     </div>
 </div>
 @if (session('success'))
@@ -13,7 +13,7 @@
 @endif
 <div class="dashboard__content__wraper">
     <div class="dashboard__section__title">
-        <h4>Data Siswa</h4>
+        <h4>Data Siswa | Pelatihan Literasi</h4>
     </div>
     <div class="row">
         <div class="col-xl-12">
@@ -27,6 +27,7 @@
                             <th>Whatsapp</th>
                             <th>Email</th>
                             <th>Status</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
