@@ -66,6 +66,9 @@ class TrainerController extends Controller
     return redirect()->route('trainer_side_datasiswa')->with('success', 'Data berhasil diperbarui');
 }
 
+
+
+
 public function hapussiswa($id)
 {
     DB::transaction(function () use ($id) {
@@ -96,7 +99,7 @@ public function hapussiswa($id)
             $siswas = Siswa::find($siswaId);
             $user = User::find($siswas->user_id);
 
-            if($siswas && $user) { 
+            if($siswas && $user) {
                 $newStatus = $siswas->status ? 0 : 1;
 
                 $siswas->status = $newStatus;

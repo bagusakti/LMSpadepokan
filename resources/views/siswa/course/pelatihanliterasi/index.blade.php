@@ -64,7 +64,7 @@
                         <div class="col-xl-4 col-lg-6 col-md-6 col-12">
                             <div class="gridarea__wraper">
                                 <div class="gridarea__img">
-                                    <a href=""><img src="{{ asset('assets/img/program/literasi.jpg') }}" alt="grid"></a>
+                                    <a href=""><img src="{{ asset('assets/img/program/literasi-bacth2.jpeg') }}" alt="grid"></a>
                                     <div class="gridarea__small__button">
                                         <div class="grid__badge">Pelatihan Literasi</div>
                                     </div>
@@ -80,7 +80,7 @@
                                         <h3><a href="">Pelatihan Literasi</a></h3>
                                         <p>Tingkatkan keterampilan membaca, menulis, dan memahami informasi dengan metode yang menyenangkan. </p>
                                         <p style="color: red;" >{{ $siswa->status ? '' : '*Tugas sedang dikoreksi oleh trainer' }}</p>
-                                        
+
                                     </div>
                                     <div class="gridarea__price">
 

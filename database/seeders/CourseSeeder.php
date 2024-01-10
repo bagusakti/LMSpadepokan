@@ -28,7 +28,7 @@ class CourseSeeder extends Seeder
         ];
 
         $deskripsi = [
-            'Pelatihan Literasi',
+            'Lorem20',
             'Lomba Technopreneur',
             'Lomba Pembuatan Game',
             'Persiapan Golden Ticket',
@@ -46,9 +46,9 @@ class CourseSeeder extends Seeder
                 'deskripsi' => $deskripsi[$i]
             ]);
         }
-        
-        
-            
-        
+
+
+
+
     }
 }

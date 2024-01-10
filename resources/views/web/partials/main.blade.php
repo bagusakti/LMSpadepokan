@@ -12,6 +12,7 @@
     <!-- Place favicon.ico in the root directory -->
 
     <!-- CSS here -->
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/animate.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/aos.min.css') }}">
@@ -25,16 +26,16 @@
         // On page load or when changing themes, best to add inline in `head` to avoid FOUC
         if (localStorage.getItem("theme-color") === "dark" || (!("theme-color" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
           document.documentElement.classList.add("is_dark");
-        } 
+        }
         if (localStorage.getItem("theme-color") === "light") {
           document.documentElement.classList.remove("is_dark");
-        } 
+        }
     </script>
 </head>
 
 <body class="body__wrapper">
 
-    
+
     <main class="main_wrapper overflow-hidden">
         @yield('content')
     </main>
