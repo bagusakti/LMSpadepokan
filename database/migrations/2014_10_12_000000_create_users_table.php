@@ -16,11 +16,10 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('institusi');
-            $table->unsignedBigInteger('course_id')->default(0);
             $table->string('whatsapp');
-            $table->boolean('status')->default(0);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->unsignedBigInteger('course_id')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });

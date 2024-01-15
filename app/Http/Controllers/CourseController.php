@@ -2,21 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
 use App\Models\Siswa;
+use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class CourseController extends Controller
 {
-    public function getCourseStudent(){
-        try{
-            $userId = Auth::user()->id;
-            $studentId  = Siswa::where('user_id' , $userId)->first()->id;
-
-        }catch(Exception $e){
-
-        }
-
+    public function index() {
+        return view('web.course.index', [
+            'title' => 'Course'
+        ]);
     }
+
+    
+
+    
 }

@@ -11,9 +11,24 @@ class Course extends Model
 
     protected $table = 'course';
 
-    protected $guarded = 'id';
+    protected $fillable = [
+        'user_id',
+        'name',
+        'category',
+        'image',
+        'd1',
+        'd2',
+        'p1',
+        'p2',
+        'p3',
+        'dp1',
+        'dp2',
+        'dp3',
+    ];
 
     public function users() {
-        return $this->hasMany(User::class);
+        return $this->belongsToMany(User::class)->withPivot('status_kelulusan');
     }
+
+
 }

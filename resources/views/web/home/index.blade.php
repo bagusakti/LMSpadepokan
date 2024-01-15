@@ -66,10 +66,6 @@
 
             <div class="herobannerarea__icon__2">
                 <img class="herobanner__common__img herobanner__img__1" src="{{asset('assets/img/herobanner/herobanner__4.png')}}" alt="photo">
-                <!-- <img class="herobanner__common__img herobanner__img__2" src="img/herobanner/herobanner__2.png" alt="photo">
-                <img class="herobanner__common__img herobanner__img__3" src="img/herobanner/herobanner__3.png" alt="photo">
-                <img class="herobanner__common__img herobanner__img__4" src="img/herobanner/herobanner__4.png" alt="photo">
-                <img class="herobanner__common__img herobanner__img__5" src="img/herobanner/herobanner__5.png" alt="photo"> -->
             </div>
 
         </div>
@@ -89,169 +85,24 @@
 				</div>
 
 				<div class="row">
+					@foreach ($courses as $course)
 					<div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12 mb-4" data-aos="fade-up">
 						<div class="single__blog__wraper">
 							<div class="single__blog__img">
-								<img src="{{asset('assets/img/program/literasi.jpg')}}" alt="blog">
+								<img src="{{asset("storage/program/$course->image")}}" alt="{{ $course->name }}">
 							</div>
 							<div class="single__blog__content">
-								<p>Literasi</p>
-								<h4> <a href="{{ route('literasi') }}">PELATIHAN LITERASI</a></h4>
+								<p>{{ $course->category }}</p>
+								<h4> <a href="{{ route('course_detail', $course->id) }}">{{ $course->name }}</a></h4>
 								<div class="single__blog__bottom__button">
-									<p style="color: white">Meningkatkan Literasi dan keterampilan dalam pengelolaan kata dan desain grafis</p>
-									<a href="{{ route('literasi') }}">Baca Selengkapnya</a>
+									<a href="{{ route('course_detail', $course->id) }}">Baca Selengkapnya</a>
 								</div>
 							</div>
 						</div>
 					</div>
-
-					<div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12 mb-4" data-aos="fade-up">
-						<div class="single__blog__wraper">
-							<div class="single__blog__img">
-								<img src="{{asset('assets/img/program/ai_2.jpg')}}" alt="blog">
-							</div>
-							<div class="single__blog__content">
-								<p>Technopreneur</p>
-								<h4> <a href="#">LOMBA TECHNOPRENEUR</a></h4>
-								<div class="single__blog__bottom__button">
-									<a href="#">Coming Soon </a>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12 mb-4" data-aos="fade-up">
-						<div class="single__blog__wraper">
-							<div class="single__blog__img">
-								<img src="{{asset('assets/img/program/ai_3.jpg')}}" alt="blog">
-							</div>
-							<div class="single__blog__content">
-								<p>Game</p>
-								<h4> <a href="#">LOMBA PEMBUATAN GAME</a></h4>
-								<div class="single__blog__bottom__button">
-									<a href="#">Coming Soon </a>
-								</div>
-							</div>
-						</div>
-					</div>
-					
-					<div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12 mb-4" data-aos="fade-up">
-						<div class="single__blog__wraper">
-							<div class="single__blog__img">
-								<img src="{{asset('assets/img/program/ai_4.jpg')}}" alt="blog">
-							</div>
-							<div class="single__blog__content">
-								<p>Golden Ticket</p>
-								<h4> <a href="#">PERSIAPAN PROGRAM GOLDEN TICKET</a></h4>
-								<div class="single__blog__bottom__button">
-									<a href="#">Coming Soon </a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12 mb-4" data-aos="fade-up">
-						<div class="single__blog__wraper">
-							<div class="single__blog__img">
-								<img src="{{asset('assets/img/program/ai_1.jpg')}}" alt="blog">
-							</div>
-							<div class="single__blog__content">
-								<p>game</p>
-								<h4> <a href="#">SIMULASI GAME NIB</a></h4>
-								<div class="single__blog__bottom__button">
-									<a href="#">Coming Soon </a>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12 mb-4" data-aos="fade-up">
-						<div class="single__blog__wraper">
-							<div class="single__blog__img">
-								<img src="{{asset('assets/img/program/ai_2.jpg')}}" alt="blog">
-							</div>
-							<div class="single__blog__content">
-								<p>Metaverse</p>
-								<h4> <a href="#">PELATIHAN METAVERSE DASAR</a></h4>
-								<div class="single__blog__bottom__button">
-									<a href="#">Coming Soon </a>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12 mb-4" data-aos="fade-up">
-						<div class="single__blog__wraper">
-							<div class="single__blog__img">
-								<img src="{{asset('assets/img/program/ai_3.jpg')}}" alt="blog">
-							</div>
-							<div class="single__blog__content">
-								<p>Metaverse</p>
-								<h4> <a href="#">PELATIHAN METAVERSE INTERMEDIETE</a></h4>
-								<div class="single__blog__bottom__button">
-									<a href="#">Coming Soon </a>
-								</div>
-							</div>
-						</div>
-					</div>
-					
-					<div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12 mb-4" data-aos="fade-up">
-						<div class="single__blog__wraper">
-							<div class="single__blog__img">
-								<img src="{{asset('assets/img/program/ai_4.jpg')}}" alt="blog">
-							</div>
-							<div class="single__blog__content">
-								<p>Metaverse</p>
-								<h4> <a href="#">PELATIHAN METAVERSE LANJUT</a></h4>
-								<div class="single__blog__bottom__button">
-									<a href="#">Coming Soon </a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12 mb-4" data-aos="fade-up">
-						<div class="single__blog__wraper">
-							<div class="single__blog__img">
-								<img src="{{asset('assets/img/program/ai_1.jpg')}}" alt="blog">
-							</div>
-							<div class="single__blog__content">
-								<p>Story Telling</p>
-								<h4> <a href="#">PELATIHAN STORY TELLING</a></h4>
-								<div class="single__blog__bottom__button">
-									<a href="#">Coming Soon </a>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12 mb-4" data-aos="fade-up">
-						<div class="single__blog__wraper">
-							<div class="single__blog__img">
-								<img src="{{asset('assets/img/program/ai_2.jpg')}}" alt="blog">
-							</div>
-							<div class="single__blog__content">
-								<p>Web Development</p>
-								<h4> <a href="#">PELATIHAN FRONTEND & BACKEND</a></h4>
-								<div class="single__blog__bottom__button">
-									<a href="#">Coming Soon </a>
-								</div>
-							</div>
-						</div>
-					</div>
+					@endforeach
 				</div>
 			</div>
 		</div>
-		
-        <div class="gridarea__2 sp_bottom_100" data-aos="fade-up">
-            <div class="container-fluid full__width__padding">
-
-                
-            </div>
-        </div>
-
 
 @endsection

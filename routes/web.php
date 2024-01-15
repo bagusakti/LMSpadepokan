@@ -9,23 +9,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FillPDFController2;
 use App\Http\Controllers\VerificationController;
 
-
-
-
-
-
-
-
-
-
-
 Route::get('/',[HomeController::class, 'index'])->name('home');
-Route::get('/pelatihanliterasi',[HomeController::class, 'literasi'])->name('literasi');
 Route::get('/masuk',[AuthController::class, 'login'])->name('login_page');
 Route::post('login',[AuthController::class, 'dologin'])->name('login');
 Route::get('logout',[AuthController::class, 'logout'])->name('logout');
-// Route::get('/daftar',[AuthController::class, 'register'])->name('register_page');
-// Route::post('register',[AuthController::class, 'doregister'])->name('register');
+Route::get('/{id}/detail',[HomeController::class, 'detailcourse'])->name('course_detail');
 
 Route::group(['middleware' => ['guest']], function () {
     Route::get('/daftar',[AuthController::class, 'register'])->name('register_page');
@@ -34,6 +22,10 @@ Route::group(['middleware' => ['guest']], function () {
 
 Route::group(['middleware' => ['role:admin']], function () {
     Route::get('/admin',[AdminController::class, 'index'])->name('dashboard_admin');
+    Route::get('/admin/datacourse',[AdminController::class, 'course'])->name('admin_side_course');
+    Route::get('/admin/datacourse/tambahkancourse',[AdminController::class, 'addcourse'])->name('admin_add_course');
+    Route::post('addcourse',[AdminController::class, 'storecourse'])->name('admin_store_course');
+    Route::post('addusercourse',[AdminController::class, 'addcourse_users'])->name('admin_add_course_users');
 });
 
 Route::group(['middleware' => ['role:trainer']], function () {

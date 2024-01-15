@@ -21,7 +21,6 @@ class UserSeeder extends Seeder
             'institusi' => 'Moderator',
             'whatsapp' => '081231231231',
             'password' => Hash::make('Bagusakti08123'),
-            'status' => 1
         ]);
         $admin1 = User::create([
             'name' => 'Moderator',
@@ -29,7 +28,6 @@ class UserSeeder extends Seeder
             'institusi' => 'Moderator',
             'whatsapp' => '081231231231',
             'password' => Hash::make('paneladmin'),
-            'status' => 1
         ]);
         $admin->assignRole('admin');
         $admin1->assignRole('admin');
@@ -40,7 +38,6 @@ class UserSeeder extends Seeder
             'institusi' => 'TimPadepokan',
             'whatsapp' => '081231231232',
             'password' => Hash::make('paneltrainer'),
-            'status' => 1
         ]);
         $trainer2 = User::create([
             'name' => 'Rakha Moderator',
@@ -48,7 +45,6 @@ class UserSeeder extends Seeder
             'institusi' => 'Moderator',
             'whatsapp' => '081231231232',
             'password' => Hash::make('paneltrainer'),
-            'status' => 1
         ]);
         $trainer3 = User::create([
             'name' => 'Azriel Jonathan R.',
@@ -56,7 +52,6 @@ class UserSeeder extends Seeder
             'institusi' => 'Padepokan Trainer',
             'whatsapp' => '081231231232',
             'password' => Hash::make('AzrielRamadhan321'),
-            'status' => 1
         ]);
         $trainer->assignRole('trainer');
         $trainer2->assignRole('trainer');
@@ -68,7 +63,6 @@ class UserSeeder extends Seeder
             'institusi' => 'Moderator',
             'whatsapp' => '081231116091',
             'password' => Hash::make('Bagusakti081123'),
-            'status' => 1
         ]);
 
         $siswa1 = User::create([
@@ -77,7 +71,6 @@ class UserSeeder extends Seeder
             'institusi' => 'Moderator',
             'whatsapp' => '081231116091',
             'password' => Hash::make('panelsiswa'),
-            'status' => 1
         ]);
         $siswa->assignRole('siswa');
         $siswa1->assignRole('siswa');

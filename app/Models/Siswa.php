@@ -17,6 +17,7 @@ class Siswa extends Model
         'email',
         'institusi',
         'whatsapp',
+        'course',
     ];
 
     // User.php
@@ -25,5 +26,7 @@ public function tugas()
 {
     return $this->hasMany(Tugas::class);
 }
+
+
 
 }

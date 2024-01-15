@@ -41,14 +41,22 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function Course() {
-        return $this->belongsTo(Course::class, 'course_id');
+    public function tugas()
+    {
+        return $this->hasMany(Tugas::class);
     }
 
-public function tugas()
-{
-    return $this->hasMany(Tugas::class);
-}
+    public function courses() 
+    {
+        return $this->belongsToMany(Course::class)->withPivot('status_kelulusan');
+    }
+
+    public function addcourses($courses)
+    {
+        return $this->courses()->attach($courses);
+    }   
+
+
 
 
     
