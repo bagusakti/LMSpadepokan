@@ -23,11 +23,20 @@ Route::group(['middleware' => ['guest']], function () {
 Route::group(['middleware' => ['role:admin']], function () {
     Route::get('/admin',[AdminController::class, 'index'])->name('dashboard_admin');
     Route::get('/admin/datacourse',[AdminController::class, 'course'])->name('admin_side_course');
+    Route::get('/admin/datacourse/detail{id}',[AdminController::class, 'detailCourse'])->name('admin_detail_course');
+    Route::get('/admin/datacourse/edit/{id}',[AdminController::class, 'editCourse'])->name('admin_edit_course');
+    Route::post('/admin/datacourse/update{id}',[AdminController::class, 'updateCourse'])->name('admin_update_course');
+    Route::get('/admin/datacourse/delete{id}',[AdminController::class, 'deleteCourse'])->name('admin_delete_course');
+    Route::post('addcourse',[AdminController::class, 'storecourse'])->name('admin_store_course');
+    Route::post('addusercourse',[AdminController::class, 'addCourseToUser'])->name('admin_add_course_users');
+    Route::post('removeusercourse',[AdminController::class, 'removeCourseFromUser'])->name('admin_remove_course_users');
+    Route::get('/admin/datatrainers',[AdminController::class, 'datatrainer'])->name('admin_side_trainers');
+    Route::get('/admin/datatsiswa/assignrole{id}',[AdminController::class, 'assignTrainer'])->name('admin_up_trainer');
+    Route::get('/admin/datatrainers/droprole{id}',[AdminController::class, 'dropSiswa'])->name('admin_drop_siswa');
+    Route::get('/admin/datasiswa',[AdminController::class, 'datasiswa'])->name('admin_side_siswas');
     Route::get('/admin/datausers',[AdminController::class, 'datauser'])->name('admin_side_users');
     Route::get('/admin/datausers/{id}',[AdminController::class, 'datacourseuser'])->name('admin_side_course_users');
     Route::get('/admin/datacourse/tambahkancourse',[AdminController::class, 'addcourse'])->name('admin_add_course');
-    Route::post('addcourse',[AdminController::class, 'storecourse'])->name('admin_store_course');
-    Route::post('addusercourse',[AdminController::class, 'addCourseToUser'])->name('admin_add_course_users');
 });
 
 Route::group(['middleware' => ['role:trainer']], function () {

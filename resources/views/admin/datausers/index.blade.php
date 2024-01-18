@@ -59,9 +59,15 @@
                                                 Tambah Course
                                             </button>
                                         </li>
+                                        <li>
+                                            <button type="button" class="dropdown-item remove-course-button" data-bs-toggle="modal" data-bs-target="#removeCourseModal" data-user-id="{{ $siswa->id }}">
+                                                Hapus Course
+                                            </button>
+                                        </li>
                                         </ul>
                                     </div>
                                 </td>
+                                
                             </tr>
                             @endforeach
                         </tbody>
@@ -95,6 +101,31 @@
         </div>
         </div>
     </div>
+    <div class="modal fade" id="removeCourseModal" tabindex="-1" aria-labelledby="removeCourseModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="removeCourseModalLabel">Hapus Course</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{ route('admin_remove_course_users') }}" method="POST" id="removeCourseForm">
+                        @csrf
+                        <input type="hidden" name="user_id" id="userIdInputRemove" >
+                        <select name="course_id[]" multiple>
+                            @foreach ($courses as $course)
+                                <option value="{{ $course->id }}">{{ $course->name }}</option>
+                            @endforeach
+                        </select>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-secondary">Save changes</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @section('script')
@@ -112,6 +143,26 @@
                     // Temukan input user_id di form
                     var input = document.querySelector('#userIdInput');
         
+                    // Atur value dari input menjadi ID user
+                    input.value = userId;
+                });
+            });
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Dapatkan semua tombol "Hapus Course"
+            var buttons = document.querySelectorAll('.remove-course-button');
+    
+            // Tambahkan event listener ke setiap tombol
+            buttons.forEach(function(button) {
+                button.addEventListener('click', function() {
+                    // Dapatkan ID user dari atribut data-user-id
+                    var userId = button.getAttribute('data-user-id');
+    
+                    // Temukan input user_id di form
+                    var input = document.querySelector('#userIdInputRemove');
+    
                     // Atur value dari input menjadi ID user
                     input.value = userId;
                 });

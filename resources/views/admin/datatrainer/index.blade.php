@@ -3,7 +3,7 @@
 @section('content')
 <div class="dashboard__content__wraper">
     <div class="dashboard__section__title">
-        <h4>Data Users  | {{ $dcourse->name }}</h4>
+        <h4>Data Trainers</h4>
     </div>
     <div class="row">
         <div class="col-xl-12">
@@ -21,15 +21,18 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($dcourse->users as $siswa)
+                        @foreach ($trainers as $user)
                         <tr>
                             <th>{{ $loop->iteration }}</th>
-                            <td>{{ $siswa->name }}</td>
-                            <td>{{ $siswa->institusi }}</td>
-                            <td>{{ $siswa->whatsapp }}</td>
-                            <td>{{ $siswa->email }}</td>
+                            <td>{{ $user->name }}</td>
+                            <td>{{ $user->institusi }}</td>
+                            <td>{{ $user->whatsapp }}</td>
+                            <td>{{ $user->email }}</td>
                             <td></td>
                             <td></td>
+                            <td>
+                                <a class="btn btn-danger" href="{{ route('admin_drop_siswa', ['id' => $user->id ]) }}">Drop</a>
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>
