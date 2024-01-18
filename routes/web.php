@@ -23,9 +23,11 @@ Route::group(['middleware' => ['guest']], function () {
 Route::group(['middleware' => ['role:admin']], function () {
     Route::get('/admin',[AdminController::class, 'index'])->name('dashboard_admin');
     Route::get('/admin/datacourse',[AdminController::class, 'course'])->name('admin_side_course');
+    Route::get('/admin/datausers',[AdminController::class, 'datauser'])->name('admin_side_users');
+    Route::get('/admin/datausers/{id}',[AdminController::class, 'datacourseuser'])->name('admin_side_course_users');
     Route::get('/admin/datacourse/tambahkancourse',[AdminController::class, 'addcourse'])->name('admin_add_course');
     Route::post('addcourse',[AdminController::class, 'storecourse'])->name('admin_store_course');
-    Route::post('addusercourse',[AdminController::class, 'addcourse_users'])->name('admin_add_course_users');
+    Route::post('addusercourse',[AdminController::class, 'addCourseToUser'])->name('admin_add_course_users');
 });
 
 Route::group(['middleware' => ['role:trainer']], function () {

@@ -12,8 +12,48 @@ class AdminController extends Controller
     {
         public function index() {
             return view('admin.dashboard.index', [
-                'title' => 'Dashboard Admin'
+                'title' => 'Dashboard Admin',
+                'courses' => Course::all()
             ]);
+        }
+
+        public function datauser() {
+            $courseName = Course::where('name');
+            return view('admin.datausers.index', [
+                'title' => 'Dash. Admin | Data Users',
+                'users' => User::all(),
+                'courses' => Course::all(),
+                'userByCourses' => User::where('course_id', $courseName )
+            ]);
+        }
+        public function datacourseuser() {
+            $courseName = Course::where('name');
+            return view('admin.datauser.index', [
+                'title' => 'Dash. Admin | Data Users',
+                'users' => User::all(),
+                'courses' => Course::all(),
+                'userByCourses' => User::where('course_id', $courseName )
+            ]);
+        }
+
+        public function addCoursetoUser(Request $request) {
+            $validator =Validator::make($request->all(), [
+                'user_id' => 'required',
+                'course_id' => 'required'
+            ]);
+
+            if ($validator->fails()) {
+                return redirect()->route('admin_side_users')
+                            ->withErrors($validator)
+                            ->withInput();
+            }
+
+            $user = User::find($request->user_id);
+            foreach ($request->course_id as $courseId) {
+                $user->addcourses($courseId);
+            }
+
+            return redirect()->route('admin_side_users');
         }
 
         public function course() {
@@ -74,17 +114,6 @@ class AdminController extends Controller
             return redirect()->route('admin_side_course');
         }
 
-        public function addcourse_users(Request $request) {
-            $users = User::find($request->users_id);
-            $courses = Course::find($request->course_id);
-
-            if ($users && $courses) {
-                $users->courses()->attach($courses);
-                return back()->with('success', 'Course berhasil ditambahkan ke siswa');
-            } else {
-                return back()->with('error', 'Siswa atau Course tidak ditemukan');
-            }
-        }
 
     }
     

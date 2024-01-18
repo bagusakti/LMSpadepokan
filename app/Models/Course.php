@@ -27,7 +27,7 @@ class Course extends Model
     ];
 
     public function users() {
-        return $this->belongsToMany(User::class)->withPivot('status_kelulusan');
+        return $this->belongsToMany(User::class, 'users_course', 'course_id' , 'users_id')->withPivot('status_kelulusan');
     }
 
 
