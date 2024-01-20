@@ -12,11 +12,11 @@
                                 <h5 class="login__title">EDIT SISWA</h5>
                             </div>
 
-                            <form id="edit-form" action="{{ route('trainer_update_siswa', ['id' => $siswa->id]) }}" method="POST" >
+                            <form id="edit-form" action="{{ route('trainer_update_siswa', ['id' => $users->id]) }}" method="POST" >
                                 @csrf
                                 <div class="login__form">
                                     <label class="form__label">Nama Lengkap :</label>
-                                        <input class="common__login__input @error('name') is-invalid @enderror" name="name" value="{{ $siswa->name }}" id="name" type="text" placeholder="Nama Lengkap Anda" required autocomplete="name" autofocus>
+                                        <input class="common__login__input @error('name') is-invalid @enderror" name="name" value="{{ $users->name }}" id="name" type="text" placeholder="Nama Lengkap Anda" required autocomplete="name" autofocus>
                                         @error('name')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -25,11 +25,11 @@
                                 </div>
                                 <div class="login__form">
                                     <label for="institusi" class="form__label">Asal Institusi :</label>
-                                    <input class="common__login__input" type="text" placeholder="Asal Institusi Anda" name="institusi" value="{{ $siswa->institusi }}" id="institusi" required>
+                                    <input class="common__login__input" type="text" placeholder="Asal Institusi Anda" name="institusi" value="{{ $users->institusi }}" id="institusi" required>
                                 </div>
                                 <div class="login__form">
                                     <label for="whatsapp" class="form__label">Nomor Whatsapp :</label>
-                                    <input class="common__login__input @error('whatsapp') is-invalid @enderror" name="whatsapp" value="{{ $siswa->whatsapp }}" id="whatsapp" type="number" placeholder="Nomor Whatsapp anda *contoh 08546...(sesuaikan dengan nomor anda)" required>
+                                    <input class="common__login__input @error('whatsapp') is-invalid @enderror" name="whatsapp" value="{{ $users->whatsapp }}" id="whatsapp" type="number" placeholder="Nomor Whatsapp anda *contoh 08546...(sesuaikan dengan nomor anda)" required>
                                     @error('whatsapp')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -38,7 +38,7 @@
                                 </div>
                                 <div class="login__form">
                                     <label for="email" class="form__label">Email :</label>
-                                        <input class="common__login__input @error('email') is-invalid @enderror" name="email" value="{{ $siswa->email }}" id="email" type="email" placeholder="Email anda *contoh example@gmail.com" required autocomplete="email">
+                                        <input class="common__login__input @error('email') is-invalid @enderror" name="email" value="{{ $users->email }}" id="email" type="email" placeholder="Email anda *contoh example@gmail.com" required autocomplete="email">
                                         @if($errors->has('email'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('email') }}</strong>

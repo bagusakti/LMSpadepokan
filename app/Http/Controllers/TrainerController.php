@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
 use App\Models\Siswa;
 use App\Models\Tugas;
 use App\Models\User;
@@ -21,74 +22,53 @@ class TrainerController extends Controller
 
 
     public function datasiswa() {
-        $siswa = Auth::user();
-        $parasiswa = Siswa::all();
-        $paratugas = Tugas::with('user')->get();
         return view('trainer.datasiswa.index',[
-            'users' => $siswa,
-            'parasiswas' => $parasiswa,
-            'paratugas' => $paratugas,
+            'users' => User::role('siswa')->get(),
             'title' => 'Data Siswa'
         ]);
     }
 
     public function editsiswa($id) {
-        $siswa = Siswa::find($id);
-        $user = User::find($siswa->user_id);
-
         return view('trainer.datasiswa.edit', [
-            'siswa' => $siswa,
-            'user' => $user,
+            'users' => User::findOrFail($id),
             'title' => 'Edit Siswa'
         ]);
     }
 
     public function updatesiswa(Request $request, $id)
-{
-    DB::transaction(function () use ($request, $id) {
-        $siswa = Siswa::find($id);
-        $user = User::find($siswa->user_id);
+    {
+        $users = User::find($id);
+        if($users) {
+            $users->name = $request->name;
+            $users->email = $request->email;
+            $users->institusi = $request->institusi;
+            $users->whatsapp = $request->whatsapp;
+        }
+        $users->save();
+        return redirect()->route('trainer_side_datasiswa')->with('success', 'Data berhasil diperbarui');
+    }
 
-        // Update data user
-        $user->name = $request->name;
-        $user->email = $request->email;
+    public function hapussiswa($id)
+    {
+        $users = User::find($id);
+        if($users) {
+            $users->delete();
+        }
+        return back()->with('success', 'Data berhasil dihapus');
+    }
 
-        // Update data siswa
-        $siswa->name = $request->name;
-        $siswa->email = $request->email;
-        $siswa->institusi = $request->institusi;
-        $siswa->whatsapp = $request->whatsapp;
+    public function Literasi() {
+        return view('trainer.course.literasi', [
+            'siswa' => User::role('siswa')->get(),
 
-        $user->save();
-        $siswa->save();
-    });
-
-    return redirect()->route('trainer_side_datasiswa')->with('success', 'Data berhasil diperbarui');
-}
-
-
-
-
-public function hapussiswa($id)
-{
-    DB::transaction(function () use ($id) {
-        $siswa = Siswa::find($id);
-        $user = User::find($siswa->user_id);
-
-        $user->delete();
-        $siswa->delete();
-    });
-
-    return back()->with('success', 'Data berhasil dihapus');
-}
+        ]);
+    }
 
     public function pelatihanliterasi() {
         $siswa = Auth::user();
-        $parasiswa = Siswa::all();
         $paratugas = Tugas::with('user')->get();
         return view('trainer.datacourse.pelatihanliterasi.index',[
             'users' => $siswa,
-            'parasiswas' => $parasiswa,
             'paratugas' => $paratugas,
             'title' => 'Pelatihan Literasi'
         ]);

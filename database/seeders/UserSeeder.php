@@ -29,33 +29,16 @@ class UserSeeder extends Seeder
             'whatsapp' => '081231231231',
             'password' => Hash::make('paneladmin'),
         ]);
-        $admin->assignRole('admin');
-        $admin1->assignRole('admin');
-
-        $trainer = User::create([
+        $admin2 = User::create([
             'name' => 'Trainer',
             'email' => 'bot@gmail.com',
             'institusi' => 'TimPadepokan',
             'whatsapp' => '081231231232',
             'password' => Hash::make('paneltrainer'),
         ]);
-        $trainer2 = User::create([
-            'name' => 'Rakha Moderator',
-            'email' => 'RakhaMod@gmail.com',
-            'institusi' => 'Moderator',
-            'whatsapp' => '081231231232',
-            'password' => Hash::make('paneltrainer'),
-        ]);
-        $trainer3 = User::create([
-            'name' => 'Azriel Jonathan R.',
-            'email' => 'AzrielTrainer@gmail.com',
-            'institusi' => 'Padepokan Trainer',
-            'whatsapp' => '081231231232',
-            'password' => Hash::make('AzrielRamadhan321'),
-        ]);
-        $trainer->assignRole('trainer');
-        $trainer2->assignRole('trainer');
-        $trainer3->assignRole('trainer');
+        $admin->assignRole('admin');
+        $admin1->assignRole('admin');
+        $admin2->assignRole('admin');
 
         $siswa = User::create([
             'name' => 'Rakha Bagus Sakti',
@@ -64,7 +47,6 @@ class UserSeeder extends Seeder
             'whatsapp' => '081231116091',
             'password' => Hash::make('Bagusakti081123'),
         ]);
-
         $siswa1 = User::create([
             'name' => 'Siswa Moderator',
             'email' => 'siswa@gmail.com',
