@@ -60,7 +60,7 @@ class TrainerController extends Controller
     public function Literasi() {
         return view('trainer.course.literasi', [
             'siswa' => User::role('siswa')->get(),
-
+            'tugas' => Tugas::with('user')->get()
         ]);
     }
 
