@@ -48,7 +48,7 @@ Route::group(['middleware' => ['role:trainer']], function () {
     Route::get('/trainer/datasiswa/edit/{id}',[TrainerController::class, 'editsiswa'])->name('trainer_edit_siswa');
     Route::post('/trainer/datasiswa/update/{id}', [TrainerController::class, 'updatesiswa'])->name('trainer_update_siswa');
     Route::get('/trainer/datasiswa/hapus/{id}',[TrainerController::class, 'hapussiswa'])->name('trainer_hapus_siswa');
-    Route::get('/trainer/pelatihanliterasi',[TrainerController::class, 'pelatihanliterasi'])->name('trainer_course_pelatihanliterasi');
+    Route::get('/trainer/pelatihanliterasi',[TrainerController::class, 'Literasi'])->name('trainer_course_pelatihanliterasi');
     Route::get('/trainer/datasiswa/status{id}', [TrainerController::class, 'statussiswa'])->name('change_status_siswa');
     Route::get('/trainer/datasiswa/tugas{id}', [TrainerController::class, 'resettugas'])->name('change_status_tugas');
 });
