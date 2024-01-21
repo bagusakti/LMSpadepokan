@@ -34,7 +34,7 @@ class UserSeeder extends Seeder
             'email' => 'bot@gmail.com',
             'institusi' => 'TimPadepokan',
             'whatsapp' => '081231231232',
-            'password' => Hash::make('paneltrainer'),
+            'password' => Hash::make('paneladmin'),
         ]);
         $admin->assignRole('admin');
         $admin1->assignRole('admin');
