@@ -81,16 +81,6 @@ class AuthController extends Controller
         ]);
         // dd($user);
 
-
-        $siswa = Siswa::create([
-            'user_id' => $user->id,
-            'name' => $request->name,
-            'email' => $request->email,
-            'institusi' => $request->institusi,
-            'whatsapp' => $request->whatsapp,
-        ]);
-        // dd($siswa);
-
         if (Auth::attempt(['password' => $request->password, 'email' => $user->email])) {
             $user->assignRole('siswa');
             $request->session()->regenerate();

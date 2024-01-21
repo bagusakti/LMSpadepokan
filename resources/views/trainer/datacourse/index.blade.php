@@ -2,8 +2,18 @@
 
 @section('content')
 <div class="dashboard__content__wraper">
+    <div class="dashboard__selection__title">
+        <h4>Data Absensi (Segera Hadir!)</h4>
+    </div>
+</div>
+@if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success1') }}
+    </div>
+@endif
+<div class="dashboard__content__wraper">
     <div class="dashboard__section__title">
-        <h4>Data Semua Siswa</h4>
+        <h4>Data Siswa | {{ $dcourses->name }}</h4>
     </div>
     <div class="row">
         <div class="col-xl-12">
@@ -16,33 +26,26 @@
                             <th>Institusi</th>
                             <th>Whatsapp</th>
                             <th>Email</th>
-                            <th></th>
+                            <th>Status</th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($users as $siswa)
+                        @foreach ($dcourses as $siswa)
                         <tr>
                             <th>{{ $loop->iteration }}</th>
                             <td>{{ $siswa->name }}</td>
                             <td>{{ $siswa->institusi }}</td>
                             <td>{{ $siswa->whatsapp }}</td>
                             <td>{{ $siswa->email }}</td>
-                            <td></td>
                             <td>
-                                <div class="dropdown">
-                                    <a class="btn btn-secondary " href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="fas fa-bars"></i>
-                                    </a>
-                                  
-                                    <ul class="dropdown-menu" aria-labelledby="Menu">
-                                      <li><a class="dropdown-item" href="{{ route('trainer_edit_siswa', ['id' => $siswa->id]) }}">Edit Siswa</a></li>
-                                      <li><a class="dropdown-item" href="{{ route('trainer_hapus_siswa', ['id' => $siswa->id]) }}" >Hapus Siswa</button></li>
-                                    </ul>
-                                  </div>
+                                <a href="{{ route('change_status_siswa', ['id' => $siswa->id]) }}" class="{{ $siswa->status ? 'btn btn-success' : 'btn btn-danger' }}">{{ $siswa->status ? 'Lulus' : 'Belum Lulus' }}</a>
                             </td>
+
+                            
                         </tr>
                         @endforeach
+                        {{-- <td><span class="dashboard__td dashboard__td__2">Processing</span></td> --}}
                     </tbody>
                 </table>
             </div>

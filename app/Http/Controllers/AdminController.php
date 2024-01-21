@@ -54,26 +54,50 @@ class AdminController extends Controller
         }
 
         public function datauser() {
-            $courseName = Course::where('name');
             return view('admin.datausers.index', [
                 'title' => 'Dash. Admin | Data Users',
                 'users' => User::all(),
                 'courses' => Course::all(),
-                'userByCourses' => User::where('course_id', $courseName )
             ]);
         }
 
+        public function editUser($id) {
+            $users = User::find($id);
+            return view('admin.datausers.index', [
+                'title' => 'Edit Users',
+                'users' => $users
+            ]);
+        }
+
+        public function updateUser(Request $request, $id) {
+            $users = User::find($id);
+
+            if($users) {
+                $users->name = $request->name;
+                $users->email = $request->email;
+                $users->institusi = $request->institusi;
+                $users->whatsapp = $request->whatsapp;
+            }
+            
+            $users->save();
+            return redirect()->route('admin_side_users');
+        }
+
+        public function deleteUser($id) {
+            $users = User::find($id);
+            if($users){
+                $users->delete();
+            }
+            return back();
+        }
+
         public function datacourseuser($id) {
-            $users = User::all();
-            $course = Course::findOrFail($id);
-            $courses = Course::all();
-            $dcourse = Course::find($id);
             return view('admin.datauser.index', [
                 'title' => 'Dash. Admin | Data SiswabyCourse',
-                'users' => $users,
-                'course' => $course,
-                'courses' => $courses,
-                'dcourse' => $dcourse
+                'users' => User::all(),
+                'course' => Course::findOrFail($id),
+                'courses' => Course::all(),
+                'dcourse' => Course::find($id),
             ]);
         }
 

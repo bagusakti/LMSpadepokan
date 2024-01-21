@@ -35,6 +35,9 @@ Route::group(['middleware' => ['role:admin']], function () {
     Route::get('/admin/datatrainers/droprole{id}',[AdminController::class, 'dropSiswa'])->name('admin_drop_siswa');
     Route::get('/admin/datasiswa',[AdminController::class, 'datasiswa'])->name('admin_side_siswas');
     Route::get('/admin/datausers',[AdminController::class, 'datauser'])->name('admin_side_users');
+    Route::get('/admin/datausers/edit{id}',[AdminController::class, 'editUser'])->name('admin_edit_users');
+    Route::post('/admin/datausers/update{id}',[AdminController::class, 'updateUser'])->name('admin_update_users');
+    Route::get('/admin/datausers/delete{id}',[AdminController::class, 'deleteUser'])->name('admin_delete_users');
     Route::get('/admin/datausers/{id}',[AdminController::class, 'datacourseuser'])->name('admin_side_course_users');
     Route::get('/admin/datacourse/tambahkancourse',[AdminController::class, 'addcourse'])->name('admin_add_course');
 });

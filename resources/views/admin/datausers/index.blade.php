@@ -52,8 +52,8 @@
                                         </a>
                                     
                                         <ul class="dropdown-menu" aria-labelledby="Menu">
-                                        <li><a class="dropdown-item" href="">Edit Users</a></li>
-                                        <li><a class="dropdown-item" href="" >Hapus Users</a></li>
+                                        <li><a class="dropdown-item" href="{{ route('admin_edit_users', ['id' => $siswa->id]) }}">Edit Users</a></li>
+                                        <li><a class="dropdown-item" href="{{ route('admin_delete_users', ['id' => $siswa->id]) }}" >Hapus Users</a></li>
                                         <li>
                                             <button type="button" class="dropdown-item add-course-button" data-bs-toggle="modal" data-bs-target="#addCourseModal" data-user-id="{{ $siswa->id }}">
                                                 Tambah Course
@@ -67,7 +67,6 @@
                                         </ul>
                                     </div>
                                 </td>
-                                
                             </tr>
                             @endforeach
                         </tbody>
