@@ -38,6 +38,7 @@ class CourseSeeder extends Seeder
             'Pelatihan Metaverse Lanjut',
             'Pelatihan Storytelling',
             'Pelatihan FrontEnd dan BackEnd',
+
         ];
 
         for ($i = 0; $i < count($namacourse); $i++) {

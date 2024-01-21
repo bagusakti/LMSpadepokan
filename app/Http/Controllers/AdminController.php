@@ -78,7 +78,8 @@ class AdminController extends Controller
                 $users->institusi = $request->institusi;
                 $users->whatsapp = $request->whatsapp;
             }
-            
+
+
             $users->save();
             return redirect()->route('admin_side_users');
         }
@@ -171,6 +172,7 @@ class AdminController extends Controller
         }
 
         public function storecourse(Request $request) {
+
             $validator = Validator::make($request->all(), [
                 "name" => "required",
                 "category" => "required",
@@ -184,9 +186,10 @@ class AdminController extends Controller
                 "dp2" => "required",
                 "dp3" => "required",
             ]);
-        
+
+
             if ($validator->fails()) {
-                return redirect()->route('admin_store_course')
+                return redirect()->route('admin_add_course')
                             ->withErrors($validator)
                             ->withInput();
             }
@@ -270,7 +273,6 @@ class AdminController extends Controller
             }
         }
 
-        
         public function deleteCourse($id){
             $course = Course::find($id);
 
@@ -279,9 +281,11 @@ class AdminController extends Controller
                 $course->delete();
                 return redirect()->route('admin_side_course');
             }
-        }   
+        }
 
 
     }
-    
+
+
+
 

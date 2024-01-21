@@ -10,7 +10,8 @@
                 </div>
 
                 <form id="addcourse-form" action="{{ route('admin_store_course') }}" method="POST" enctype="multipart/form-data">
-                    @csrf
+
+                   @csrf
                         <div class="login__form">
                             <label for="name" class="form__label">Name:</label>
                             <input class="common__login__input" type="text" name="name" id="name" required>
