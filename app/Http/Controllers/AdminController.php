@@ -189,7 +189,7 @@ class AdminController extends Controller
 
 
             if ($validator->fails()) {
-                return redirect()->route('admin_side_course')
+                return redirect()->route('admin_add_course')
                             ->withErrors($validator)
                             ->withInput();
             }
