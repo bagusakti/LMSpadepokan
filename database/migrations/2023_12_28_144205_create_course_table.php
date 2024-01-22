@@ -24,6 +24,7 @@ return new class extends Migration
             $table->longText('dp1');
             $table->longText('dp2');
             $table->longText('dp3');
+            $table->text('pendaftaran')->nullable();
             $table->timestamps();
         });
     }

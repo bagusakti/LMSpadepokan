@@ -89,6 +89,13 @@
                             @endif
                         </div>
                         <div class="login__form">
+                            <label for="pendaftaran" class="form__label">Link Pendaftaran:</label>
+                            <input class="common__login__input" type="text" name="pendaftaran" id="pendaftaran" required>
+                            @if ($errors->has('pendaftaran'))
+                                <span class="error">{{ $errors->first('pendaftaran') }}</span>
+                            @endif
+                        </div>
+                        <div class="login__form">
                             <a class="btn btn-secondary" href="{{ URL::previous() }}">Kembali</a>
                             <button type="submit" class="btn btn-primary">Tambah Course</button>
                         </div>

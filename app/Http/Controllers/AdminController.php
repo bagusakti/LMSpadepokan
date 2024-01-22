@@ -209,6 +209,7 @@ class AdminController extends Controller
                 'dp1' => $request->dp1,
                 'dp2' => $request->dp2,
                 'dp3' => $request->dp3,
+                'pendaftaran' => $request->pendaftaran
             ]);
 
             // @dd($course);
@@ -267,6 +268,7 @@ class AdminController extends Controller
                     'dp1' => $request->dp1,
                     'dp2' => $request->dp2,
                     'dp3' => $request->dp3,
+                    'pendaftaran' => $request->pendaftaran
                 ]);
 
                 return redirect()->route('admin_side_course');
