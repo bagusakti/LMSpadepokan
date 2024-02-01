@@ -4,19 +4,19 @@
 <div class="dashboard__content__wraper">
     <div class="dashboard__section__title">
         <h4>Data CATC</h4>
-        @if (Auth::check() && $users->hasRole('admin'))
         <div>
             <a class="btn btn-primary" href="{{ URL::previous() }}">
                 Kembali
             </a>
+            @if (Auth::check() && $users->hasRole('admin'))
             <a class="btn btn-secondary" href="{{ route('admin_catc_import') }}">
                 Import Excel
             </a>
             <a class="btn btn-warning" href="{{ route('admin_catc_export') }}">
                 Ekspor Excel
             </a>
+            @endif
         </div>
-        @endif
     </div>
     <div class="row">
         <div class="col-xl-12">
