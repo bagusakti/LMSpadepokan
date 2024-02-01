@@ -5,16 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Trainer extends Model
+class CATC extends Model
 {
     use HasFactory;
 
-    protected $table = 'trainer';
+    protected $table = 'catc';
 
     protected $fillable = [
-        'name',
-        'email',
-        'institusi',
-        'whatsapp',
+        'nama',
+        'siswa'
     ];
 }

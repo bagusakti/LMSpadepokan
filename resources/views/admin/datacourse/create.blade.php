@@ -46,7 +46,7 @@
                             @endif
                         </div>
                         <div class="login__form">
-                            <label for="p1" class="form__label">Kuntungan (1):</label>
+                            <label for="p1" class="form__label">Keuntungan (1):</label>
                             <input class="common__login__input" type="text" name="p1" id="p1" required>
                             @if ($errors->has('p1'))
                                 <span class="error">{{ $errors->first('p1') }}</span>
@@ -89,11 +89,23 @@
                         </div>
                         <div class="login__form">
                             <a class="btn btn-secondary" href="{{ URL::previous() }}">Kembali</a>
-                            <button type="submit" class="btn btn-primary">Tambah Course</button>
+                            <button type="submit" id="submit" class="btn btn-primary">Tambah Course</button>
                         </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
+@endsection
+@section('scripts')
+<script>
+    document.querySelector('#addcourse-form').addEventListener('submit', function(event) {
+        const submitButton = event.target.querySelector('#submit');
+        if (!submitButton.disabled) {
+            submitButton.disabled = true;
+            event.target.submit();
+        }
+        event.preventDefault();
+    });
+</script>
 @endsection

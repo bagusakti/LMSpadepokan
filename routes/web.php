@@ -5,6 +5,7 @@ use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\TrainerController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CourseController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FillPDFController2;
 use App\Http\Controllers\VerificationController;
@@ -14,6 +15,7 @@ Route::get('/masuk',[AuthController::class, 'login'])->name('login_page');
 Route::post('login',[AuthController::class, 'dologin'])->name('login');
 Route::get('logout',[AuthController::class, 'logout'])->name('logout');
 Route::get('/{id}/detail',[HomeController::class, 'detailcourse'])->name('course_detail');
+Route::get('/TabelCatc',[HomeController::class, 'index_catc'])->name('sertifikat_catc');
 
 Route::group(['middleware' => ['guest']], function () {
     Route::get('/daftar',[AuthController::class, 'register'])->name('register_page');
@@ -40,6 +42,12 @@ Route::group(['middleware' => ['role:admin']], function () {
     Route::get('/admin/datausers/delete{id}',[AdminController::class, 'deleteUser'])->name('admin_delete_users');
     Route::get('/admin/datausers/{id}',[AdminController::class, 'datacourseuser'])->name('admin_side_course_users');
     Route::get('/admin/datacourse/tambahkancourse',[AdminController::class, 'addcourse'])->name('admin_add_course');
+
+    Route::get('/admin/datacatc',[AdminController::class, 'index_catc'])->name('admin_side_catc');
+    Route::get('/admin/datacatc/import',[AdminController::class, 'import_catc'])->name('admin_catc_import');
+    Route::get('/admin/datacatc/download',[AdminController::class, 'export_catc'])->name('admin_catc_export');
+
+
 });
 
 Route::group(['middleware' => ['role:trainer']], function () {
@@ -51,13 +59,21 @@ Route::group(['middleware' => ['role:trainer']], function () {
     Route::get('/trainer/pelatihanliterasi',[TrainerController::class, 'Literasi'])->name('trainer_course_pelatihanliterasi');
     Route::get('/trainer/datasiswa/status{id}', [TrainerController::class, 'statussiswa'])->name('change_status_siswa');
     Route::get('/trainer/datasiswa/tugas{id}', [TrainerController::class, 'resettugas'])->name('change_status_tugas');
+
+    Route::get('/trainer/task/toeic',[CourseController::class, 'index_toeic'])->name('trainer_course_toeic');
+    Route::get('/trainer/task/toeic/add',[CourseController::class, 'add_Toeic'])->name('trainer_course_add_toeic');
+    Route::get('/trainer/task/toeic/add',[CourseController::class, 'edit_Toeic'])->name('trainer_course_edit_toeic');
+    Route::post('addToeic', [CourseController::class, 'create_toeic'])->name('trainer_addtoeic');
+
 });
 
 Route::group(['middleware' => ['role:siswa']], function () {
     Route::get('/siswa',[SiswaController::class, 'index'])->name('dashboard_siswa');
+    Route::get('/siswa/toeic',[SiswaController::class, 'toeic'])->name('siswa_side_toeic');
     Route::get('/siswa/profil',[SiswaController::class, 'profil'])->name('siswa_side_profilsiswa');
     Route::get('/siswa/pelatihanliterasi',[SiswaController::class, 'pelatihanliterasi'])->name('siswa_side_pelatihanliterasi');
     Route::get('/siswa/pelatihanliterasi/unduh', [FillPDFController2::class, 'process'])->name('unduh_sertifikat');
     Route::get('/siswa/pelatihan/verification', [VerificationController::class, 'verification'])->name('verification');
-    Route::post('up', [SiswaController::class, 'uplink'])->name('siswa_up');
+    Route::post('up_literasi', [SiswaController::class, 'uplink'])->name('siswa_up');
+    // Route::post('up_toeic', [CourseController::class, 'submit'])->name('up_toeic');
 });

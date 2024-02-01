@@ -5,26 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Tugas extends Model
+class Toeic extends Model
 {
     use HasFactory;
 
-    protected $table = 'tugas';
+    protected $table = 'toeic';
 
     protected $fillable = [
         'user_id',
-        'judul',
-        'link_gbook',
-        'link_blog',
+        'title',
+        'nilai',
     ];
 
-    public function user()
-    {
+    public function user() {
         return $this->belongsTo(User::class);
-    }
-
-    public function courses() 
-    {
-        return $this->belongsTo(Course::class);
     }
 }

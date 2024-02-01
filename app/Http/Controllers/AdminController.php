@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\CatcExport;
+use App\Imports\CatcImport;
+use App\Models\CATC;
 use App\Models\Course;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use Maatwebsite\Excel\Facades\Excel;
 use Spatie\Permission\Contracts\Role;
 
 class AdminController extends Controller
@@ -279,8 +283,24 @@ class AdminController extends Controller
                 $course->delete();
                 return redirect()->route('admin_side_course');
             }
-        }   
+        }
+        
+        public function index_catc() {
+            return view('admin.print.catc.index', [
+                'catc' => CATC::all(),
+                'title' => 'Data CATC',
+                'courses' => Course::all()                
+            ]);
+        }
 
+        public function import_catc() {
+            Excel::import(new CatcImport, 'datacatc.xlsx');
+            return back();
+        }
+
+        public function export_catc() {
+            return Excel::download(new CatcExport, 'datacatc.xlsx');
+        }
 
     }
     

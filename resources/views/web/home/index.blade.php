@@ -102,6 +102,19 @@
 					</div>
 					@endforeach
 				</div>
+				<div class="row">
+					<div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12 mb-4" data-aos="fade-up">
+						<div class="single__blog__wraper">
+							<div class="single__blog__content">
+								<p>CATC</p>
+								<h4> <a href="{{ route('sertifikat_catc') }}">UNDUH SERTIFIKAT CATC</a></h4>
+								<div class="single__blog__bottom__button">
+									<a href="{{ route('sertifikat_catc') }}">Baca Selengkapnya</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 

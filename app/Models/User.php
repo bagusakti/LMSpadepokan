@@ -41,11 +41,6 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function tugas()
-    {
-        return $this->hasMany(Tugas::class);
-    }
-
     public function courses() 
     {
         return $this->belongsToMany(Course::class, 'users_course', 'users_id', 'course_id')->withPivot('status_kelulusan');
@@ -55,6 +50,14 @@ class User extends Authenticatable
     {
         return $this->courses()->attach($courses);
     }   
+
+    public function toeics() {
+        return $this->hasMany(Toeic::class);
+    }
+
+    public function literasis() {
+        return $this->hasMany(Literasi::class);
+    }
 
 
 

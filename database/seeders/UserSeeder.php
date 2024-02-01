@@ -54,7 +54,7 @@ class UserSeeder extends Seeder
             'whatsapp' => '081231116091',
             'password' => Hash::make('panelsiswa'),
         ]);
-        $siswa->assignRole('siswa');
+        $siswa->assignRole('trainer');
         $siswa1->assignRole('siswa');
     }
 }

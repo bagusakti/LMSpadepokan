@@ -1,9 +1,6 @@
 @extends('siswa.partials.main')
 
 @section('content')
-@php
-    $submission = \App\Models\Tugas::where('user_id', auth()->id())->first();
-@endphp
 
 @if (!isset($submission->status_tugas) || !$submission->status_tugas)
 <div class="dashboard__content__wraper">

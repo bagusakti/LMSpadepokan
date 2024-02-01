@@ -11,13 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('absensi', function (Blueprint $table) {
+        Schema::create('toeic', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id')->unsigned;
-            $table->time('attendance_time');
-            $table->date('attendance_date');
-            $table->boolean('status')->default(0);
-            // $table->foreign('user_id')->references('id')->on('users');
+            $table->string('title')->nullable();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->integer('nilai')->nullable();
             $table->timestamps();
         });
     }
@@ -27,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('absensi');
+        Schema::dropIfExists('toeic');
     }
 };

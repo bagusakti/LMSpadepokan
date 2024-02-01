@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CATC;
 use App\Models\Course;
 use App\Models\Siswa;
 use App\Models\User;
@@ -29,6 +30,14 @@ class HomeController extends Controller
             'title' => 'Detail Course',
             'courses' => $courses,
             'users' => $users,
+        ]);
+    }
+
+    public function index_catc() {
+        return view('web.catc.index', [
+            'catc' => CATC::all(),
+            'title' => 'Unduh Sertifikat CATC',
+            'users' => Auth::user()
         ]);
     }
 }
