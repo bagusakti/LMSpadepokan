@@ -24,6 +24,7 @@ class Course extends Model
         'dp1',
         'dp2',
         'dp3',
+        'pendaftaran'
     ];
 
     public function users() {

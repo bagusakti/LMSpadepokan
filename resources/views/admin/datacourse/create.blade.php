@@ -10,7 +10,8 @@
                 </div>
 
                 <form id="addcourse-form" action="{{ route('admin_store_course') }}" method="POST" enctype="multipart/form-data">
-                    @csrf
+
+                   @csrf
                         <div class="login__form">
                             <label for="name" class="form__label">Name:</label>
                             <input class="common__login__input" type="text" name="name" id="name" required>
@@ -85,6 +86,13 @@
                             <input class="common__login__input" type="text" name="dp3" id="dp3" required>
                             @if ($errors->has('dp3'))
                                 <span class="error">{{ $errors->first('dp3') }}</span>
+                            @endif
+                        </div>
+                        <div class="login__form">
+                            <label for="pendaftaran" class="form__label">Link Pendaftaran:</label>
+                            <input class="common__login__input" type="text" name="pendaftaran" id="pendaftaran" required>
+                            @if ($errors->has('pendaftaran'))
+                                <span class="error">{{ $errors->first('pendaftaran') }}</span>
                             @endif
                         </div>
                         <div class="login__form">

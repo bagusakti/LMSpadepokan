@@ -17,7 +17,7 @@
 
         <div class="aboutarea__5 sp_bottom_100 sp_top_40">
             <div class="container">
-                
+
                 <div class="row">
                     <div class="col-xl-6 col-lg-6" data-aos="fade-up">
                         <div class="aboutarea__5__img" data-tilt>
@@ -66,14 +66,14 @@
                                     </ul>
                                 </div>
                             </div>
-                            <a class="default__button herobannerarea__button__3" style="margin-top: 5%;" href="">  Daftar Sekarang</a>
+                            <a class="default__button herobannerarea__button__3" style="margin-top: 5%;" href="{{ $courses->pendaftaran }}">  Daftar Sekarang</a>
 
 
                         </div>
                     </div>
                 </div>
             </div>
-        </div>  
+        </div>
         <div class="abouttabarea sp_bottom_70">
             <div class="container">
                 <div class="row">
@@ -137,8 +137,8 @@
                                                             <td>
                                                                 <span class="{{ $siswa->status_kelulusan ? 'badge bg-success' : 'badge bg-danger' }}">{{ $siswa->status_kelulusan ? 'Lulus' : 'Belum Lulus' }}</span>
                                                             </td>
-                                
-                                                            
+
+
                                                         </tr>
                                                     @endforeach
                                                 </tbody>
@@ -176,7 +176,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
         </div>

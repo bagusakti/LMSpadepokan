@@ -1,14 +1,15 @@
 @extends('web.partials.main')
 
 @section('content')
-        <div class="herobannerarea herobannerarea__2 herobannerarea__machine__learning" style="background: url(img/herobanner/ai_1.jpg)">
+    <div class="herobannerarea herobannerarea__2 herobannerarea__machine__learning"
+        style="background: url(img/herobanner/ai_1.jpg)">
 
-            <div class="swiper ai__slider">
+        <div class="swiper ai__slider">
 
-                <div class="herobannerarea__slider__wrap swiper-wrapper">
+            <div class="herobannerarea__slider__wrap swiper-wrapper">
 
-                    <div class="swiper-slide herobannerarea__single__slider">
-                        <div class="container">
+                <div class="swiper-slide herobannerarea__single__slider">
+                    <div class="container">
                         <div class="row justify-content-center">
                             <div class="col-xl-9 col-lg-10 col-md-12 col-sm-12 col-12" data-aos="fade-up">
                                 <div class="herobannerarea__content__wraper text-center">
@@ -25,64 +26,55 @@
 
 
                                     <div class="herobannerarea__text herobannerarea__text__2">
-                                        <p>Peluang Baru, Wawasan Baru, Prestasi Baru <br>Temukan Potensi Anda Melalui Pembelajaran Interaktif </p>
+                                        <p>Peluang Baru, Wawasan Baru, Prestasi Baru <br>Temukan Potensi Anda Melalui
+                                            Pembelajaran Interaktif </p>
                                     </div>
                                     <div class="hreobannerarea__button__2">
-										@if (Auth::guest())
-                                        <a class="default__button" href="{{ route('login_page') }}">Masuk</a>
-											@elseif(Auth::check() && $users->hasRole('admin'))
-											<a class="default__button" href="{{ route('dashboard_admin') }}">Masuk (Dashboard Admin)</a>
-												@elseif(Auth::check() && $users->hasRole('trainer'))
-												<a class="default__button" href="{{ route('dashboard_trainer') }}">Masuk (Dashboard Trainer)</a>
-													@elseif(Auth::check() && $users->hasRole('siswa'))
-													<a class="default__button" href="{{ route('dashboard_siswa') }}">Masuk (Dashboard)</a>
-										@endif
+                                        @if (Auth::guest())
+                                            <a class="default__button" href="{{ route('login_page') }}">Masuk</a>
+                                        @elseif(Auth::check() && $users->hasRole('admin'))
+                                            <a class="default__button" href="{{ route('dashboard_admin') }}">Masuk
+                                                (Dashboard Admin)</a>
+                                        @elseif(Auth::check() && $users->hasRole('trainer'))
+                                            <a class="default__button" href="{{ route('dashboard_trainer') }}">Masuk
+                                                (Dashboard Trainer)</a>
+                                        @elseif(Auth::check() && $users->hasRole('siswa'))
+                                            <a class="default__button" href="{{ route('dashboard_siswa') }}">Masuk
+                                                (Dashboard)</a>
+                                        @endif
 
-                                        
-										@if (Auth::guest())
-										<a class="default__button hreobannerarea__button__3" href="{{ route('register_page') }}">Daftar</a>
-										@endif
 
-										@if (Auth::check() && $users->hasAnyRole('admin', 'trainer', 'siswa'))
-										<a href="{{ route('logout') }}" class="default__button hreobannerarea__button__3">Logout</a>		
-										@endif
+                                        @if (Auth::guest())
+                                            <a class="default__button hreobannerarea__button__3"
+                                                href="{{ route('register_page') }}">Daftar</a>
+                                        @endif
+
+                                        @if (Auth::check() && $users->hasAnyRole('admin', 'trainer', 'siswa'))
+                                            <a href="{{ route('logout') }}"
+                                                class="default__button hreobannerarea__button__3">Logout</a>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        </div>
                     </div>
-
                 </div>
 
-
-
-            </div>
-            <div class="slider__controls__wrap slider__controls__pagination slider__controls__arrows">
-                <!--<div class="swiper-button-next arrow-btn"></div>
-                <div class="swiper-button-prev arrow-btn"></div>-->
-                <div class="swiper-pagination"></div>
             </div>
 
-            <div class="herobannerarea__icon__2">
-                <img class="herobanner__common__img herobanner__img__1" src="{{asset('assets/img/herobanner/herobanner__4.png')}}" alt="photo">
-            </div>
+
 
         </div>
-   
-		<div class="early__programs research__programs sp_bottom_100">
-			<div class="container-fluid full__width__padding">
+        <div class="slider__controls__wrap slider__controls__pagination slider__controls__arrows">
+            <!--<div class="swiper-button-next arrow-btn"></div>
+                    <div class="swiper-button-prev arrow-btn"></div>-->
+            <div class="swiper-pagination"></div>
+        </div>
 
-				<div class="row">
-					<div class="section__title text-center" data-aos="fade-up">
-						<div class="section__title__button">
-							<div class="default__small__button">Pelatihan Kami</div>
-						</div>
-						<div class="section__title__heading heading__underline">
-							<h2>Komunitas Belajar Online <span>Berbagi Pengetahuan</span> <br>Membangun Inspirasi.</h2>
-						</div>
-					</div>
-				</div>
+        <div class="herobannerarea__icon__2">
+            <img class="herobanner__common__img herobanner__img__1"
+                src="{{ asset('assets/img/herobanner/herobanner__4.png') }}" alt="photo">
+        </div>
 
 				<div class="row">
 					@foreach ($courses as $course)
@@ -117,5 +109,4 @@
 				</div>
 			</div>
 		</div>
-
 @endsection
