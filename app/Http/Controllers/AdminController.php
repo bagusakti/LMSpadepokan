@@ -297,9 +297,10 @@ class AdminController extends Controller
             ]);
         }
 
-        public function import_catc() {
-            Excel::import(new CatcImport, 'datacatc.xlsx');
-            return back();
+        public function import_catc(Request $request) {
+            Excel::import(new CatcImport, 
+                      $request->file('file'));
+            return redirect()->back();
         }
 
         public function export_catc() {

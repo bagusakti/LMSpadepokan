@@ -6,13 +6,14 @@
         <h4>Data CATC</h4>
     </div>
     <div class="row">
+        <form action="{{ route('admin_catc_import') }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            <input type="file" name="file" class="form-control">
+            <br>
+            <button class="btn btn-secondary">Import Excel</button>
+            <a class="btn btn-warning" href="{{ route('admin_catc_export') }}">Ekspor Excel</a>
+        </form>
         <div class="col-xl-12">
-            <a class="btn btn-secondary" href="{{ route('admin_catc_import') }}">
-                Import Excel
-            </a>
-            <a class="btn btn-warning" href="{{ route('admin_catc_export') }}">
-                Ekspor Excel
-            </a>
             <div class="dashboard__table table-responsive">
                 
                 <table>

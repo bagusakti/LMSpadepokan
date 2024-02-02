@@ -8,14 +8,6 @@
             <a class="btn btn-primary" href="{{ URL::previous() }}">
                 Kembali
             </a>
-            @if (Auth::check() && $users->hasRole('admin'))
-            <a class="btn btn-secondary" href="{{ route('admin_catc_import') }}">
-                Import Excel
-            </a>
-            <a class="btn btn-warning" href="{{ route('admin_catc_export') }}">
-                Ekspor Excel
-            </a>
-            @endif
         </div>
     </div>
     <div class="row">

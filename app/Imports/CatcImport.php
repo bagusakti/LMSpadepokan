@@ -15,8 +15,8 @@ class CatcImport implements ToModel
     public function model(array $row)
     {
         return new CATC([
-            'nama' => $row[1],
-            'sekolah' => $row[2]
+            'nama' => $row[0],
+            'sekolah' => $row[1]
 
         ]);
     }

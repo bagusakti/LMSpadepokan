@@ -44,7 +44,7 @@ Route::group(['middleware' => ['role:admin']], function () {
     Route::get('/admin/datacourse/tambahkancourse',[AdminController::class, 'addcourse'])->name('admin_add_course');
 
     Route::get('/admin/datacatc',[AdminController::class, 'index_catc'])->name('admin_side_catc');
-    Route::get('/admin/datacatc/import',[AdminController::class, 'import_catc'])->name('admin_catc_import');
+    Route::post('/admin/datacatc/import',[AdminController::class, 'import_catc'])->name('admin_catc_import');
     Route::get('/admin/datacatc/download',[AdminController::class, 'export_catc'])->name('admin_catc_export');
 
 

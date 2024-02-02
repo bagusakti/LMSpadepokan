@@ -13,6 +13,6 @@ class CATC extends Model
 
     protected $fillable = [
         'nama',
-        'siswa'
+        'sekolah'
     ];
 }

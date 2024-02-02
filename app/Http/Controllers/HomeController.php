@@ -40,4 +40,16 @@ class HomeController extends Controller
             'users' => Auth::user()
         ]);
     }
+
+    public function search_catc(Request $request) { 
+        $search = $request->get('search');
+        $results = CATC::all()->where('nama', 'like', '%', $search, '%')->orWhere('sekolah', 'like', '%', $search, '%');
+        return view('web.catc.index', [
+            'catc' => $results,
+            'title' => 'Unduh Sertifikat CATC',
+            'users' => Auth::user()
+        ]);
+    }
+    
+    
 }

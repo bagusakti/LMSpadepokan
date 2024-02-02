@@ -16,7 +16,7 @@ class SiswaController extends Controller
     public function index() {
         return view('siswa.dashboard.index', [
             'title' => 'Dashboard Siswa',
-            'user' => User::auth()
+            'users' => Auth::user()
         ]);
     }
 
